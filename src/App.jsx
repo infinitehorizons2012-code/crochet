@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import StitchWorkshop from './components/StitchWorkshop';
 import SymbolQuiz from './components/SymbolQuiz';
 import ProjectCatalog from './components/ProjectCatalog';
 import YarnMixer from './components/YarnMixer';
@@ -53,7 +51,7 @@ class ErrorBoundary extends React.Component {
 }
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('workshop');
+  const [activeTab, setActiveTab] = useState('quiz');
   const [isMuted, setIsMuted] = useState(false);
 
   // Safe localStorage loading with try-catch
@@ -115,22 +113,7 @@ export default function App() {
         {/* Main Content Area */}
         <main className="flex-grow">
           
-          {/* Welcome Hero Banner (Shows on workshop tab) */}
-          {activeTab === 'workshop' && (
-            <Hero
-              onStartLearning={() => setActiveTab('workshop')}
-              onExploreProjects={() => setActiveTab('projects')}
-            />
-          )}
-
           {/* Tab Router */}
-          {activeTab === 'workshop' && (
-            <StitchWorkshop
-              onAddStars={handleAddStars}
-              onUnlockBadge={handleUnlockBadge}
-            />
-          )}
-
           {activeTab === 'quiz' && (
             <SymbolQuiz
               onAddStars={handleAddStars}

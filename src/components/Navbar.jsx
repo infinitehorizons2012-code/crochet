@@ -6,8 +6,7 @@ export default function Navbar({ activeTab, setActiveTab, stars, badgesUnlocked,
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { id: 'workshop', label: 'Học Mũi Móc', icon: BookOpen },
-    { id: 'quiz', label: 'Trắc Nghiệm 🎯', icon: HelpCircle },
+    { id: 'quiz', label: 'Trắc Nghiệm & Ký Hiệu 🎯', icon: HelpCircle },
     { id: 'projects', label: 'Dự Án Cho Bé', icon: Heart },
     { id: 'mixer', label: 'Phối Màu & Dụng Cụ', icon: Palette },
     { id: 'badges', label: 'Huy Chương', icon: Award },
@@ -23,14 +22,6 @@ export default function Navbar({ activeTab, setActiveTab, stars, badgesUnlocked,
     soundFx.playPop();
     setActiveTab(tabId);
     setMobileMenuOpen(false);
-    if (tabId === 'workshop') {
-      setTimeout(() => {
-        const el = document.getElementById('stitch-workshop');
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 50);
-    }
   };
 
   return (
@@ -40,7 +31,7 @@ export default function Navbar({ activeTab, setActiveTab, stars, badgesUnlocked,
           
           {/* Logo */}
           <div 
-            onClick={() => handleNavClick('workshop')} 
+            onClick={() => handleNavClick('quiz')} 
             className="flex items-center gap-3 cursor-pointer group"
           >
             <div className="w-12 h-12 bg-gradient-to-tr from-pink-400 to-amber-300 rounded-2xl flex items-center justify-center text-2xl shadow-md group-hover:rotate-12 transition-transform duration-300">
