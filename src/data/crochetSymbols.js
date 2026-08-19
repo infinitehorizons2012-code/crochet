@@ -10,7 +10,7 @@ export const CROCHET_SYMBOLS = [
     svgType: 'ellipse',
     description: 'Vòng tròn bầu dục nằm ngang - đại diện cho 1 mũi bính.',
     // Cloudinary media path / full URL (Cloud: zopjocdi)
-    videoUrl: '', // Ví dụ: 'crochet/ch_video.mp4' hoặc 'https://res.cloudinary.com/zopjocdi/video/upload/...'
+    videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787131456/crochet_kids_symbols/ch_1787131452429.mp4', // Ví dụ: 'crochet/ch_video.mp4' hoặc 'https://res.cloudinary.com/zopjocdi/video/upload/...'
     imageUrl: '', // Ví dụ: 'crochet/ch_image.jpg'
   },
   {
