@@ -122,33 +122,6 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                 </div>
               )}
             </div>
-
-            {/* TRẮC NGHIỆM TAB */}
-            <button
-              onClick={() => handleNavClick('quiz')}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-extrabold text-sm transition-all duration-200 ${
-                activeTab === 'quiz'
-                  ? 'bg-gradient-to-r from-pink-400 to-purple-400 text-white shadow-md scale-105'
-                  : 'text-slate-600 hover:text-pink-500 hover:bg-white/60'
-              }`}
-            >
-              <HelpCircle className={`w-4 h-4 ${activeTab === 'quiz' ? 'text-white' : 'text-pink-400'}`} />
-              Trắc Nghiệm & Ký Hiệu 🎯
-            </button>
-
-            {/* PHỐI MÀU TAB */}
-            <button
-              onClick={() => handleNavClick('mixer')}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-extrabold text-sm transition-all duration-200 ${
-                activeTab === 'mixer'
-                  ? 'bg-gradient-to-r from-pink-400 to-purple-400 text-white shadow-md scale-105'
-                  : 'text-slate-600 hover:text-pink-500 hover:bg-white/60'
-              }`}
-            >
-              <Palette className={`w-4 h-4 ${activeTab === 'mixer' ? 'text-white' : 'text-purple-400'}`} />
-              Phối Màu & Dụng Cụ 🎨
-            </button>
-
           </nav>
 
           {/* Right Status Actions */}
@@ -210,32 +183,18 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                 <Heart className="w-4 h-4" />
                 Dự Án / Project 🐙
               </button>
+              <button
+                onClick={() => handleNavClick('level1_quiz')}
+                className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold text-sm transition-all ${
+                  activeTab === 'level1_quiz'
+                    ? 'bg-amber-500 text-white shadow-md'
+                    : 'bg-slate-50 text-slate-700'
+                }`}
+              >
+                <HelpCircle className="w-4 h-4" />
+                Trắc Nghiệm Đọc Chart 🎯
+              </button>
             </div>
-
-            <button
-              onClick={() => handleNavClick('quiz')}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl font-bold text-base transition-all ${
-                activeTab === 'quiz'
-                  ? 'bg-gradient-to-r from-pink-400 to-purple-400 text-white shadow-md'
-                  : 'bg-white text-slate-700'
-              }`}
-            >
-              <HelpCircle className="w-5 h-5" />
-              Trắc Nghiệm & Ký Hiệu 🎯
-            </button>
-
-            <button
-              onClick={() => handleNavClick('mixer')}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl font-bold text-base transition-all ${
-                activeTab === 'mixer'
-                  ? 'bg-gradient-to-r from-pink-400 to-purple-400 text-white shadow-md'
-                  : 'bg-white text-slate-700'
-              }`}
-            >
-              <Palette className="w-5 h-5" />
-              Phối Màu & Dụng Cụ 🎨
-            </button>
-
           </div>
         )}
       </div>
