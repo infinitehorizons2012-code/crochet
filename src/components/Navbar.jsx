@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
-import { Volume2, VolumeX, Star, Award, Sparkles, Menu, X, BookOpen, Heart, Palette, HelpCircle } from 'lucide-react';
+import { Volume2, VolumeX, Star, Sparkles, Menu, X, BookOpen, Heart, Palette, HelpCircle, ChevronDown, Film, Layers } from 'lucide-react';
 import { soundFx } from '../utils/sound';
 
-export default function Navbar({ activeTab, setActiveTab, stars, badgesUnlocked, isMuted, setIsMuted }) {
+export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsMuted }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const navItems = [
-    { id: 'quiz', label: 'Trắc Nghiệm & Ký Hiệu 🎯', icon: HelpCircle },
-    { id: 'projects', label: 'Dự Án Cho Bé', icon: Heart },
-    { id: 'mixer', label: 'Phối Màu & Dụng Cụ', icon: Palette },
-  ];
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const handleMuteToggle = () => {
     const muted = soundFx.toggleMute();
@@ -21,7 +16,10 @@ export default function Navbar({ activeTab, setActiveTab, stars, badgesUnlocked,
     soundFx.playPop();
     setActiveTab(tabId);
     setMobileMenuOpen(false);
+    setDropdownOpen(false);
   };
+
+  const isLevel1Active = activeTab === 'level1_lessons' || activeTab === 'projects';
 
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b-4 border-pink-200 shadow-sm">
@@ -30,7 +28,7 @@ export default function Navbar({ activeTab, setActiveTab, stars, badgesUnlocked,
           
           {/* Logo */}
           <div 
-            onClick={() => handleNavClick('quiz')} 
+            onClick={() => handleNavClick('level1_lessons')} 
             className="flex items-center gap-3 cursor-pointer group"
           >
             <div className="w-12 h-12 bg-gradient-to-tr from-pink-400 to-amber-300 rounded-2xl flex items-center justify-center text-2xl shadow-md group-hover:rotate-12 transition-transform duration-300">
@@ -50,25 +48,92 @@ export default function Navbar({ activeTab, setActiveTab, stars, badgesUnlocked,
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-2 bg-pink-50/80 p-1.5 rounded-full border-2 border-pink-100">
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              const isActive = activeTab === item.id;
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => handleNavClick(item.id)}
-                  className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-extrabold text-sm transition-all duration-200 ${
-                    isActive
-                      ? 'bg-gradient-to-r from-pink-400 to-purple-400 text-white shadow-md scale-105'
-                      : 'text-slate-600 hover:text-pink-500 hover:bg-white/60'
-                  }`}
+          <nav className="hidden md:flex items-center gap-2 bg-pink-50/80 p-1.5 rounded-full border-2 border-pink-100 relative">
+            
+            {/* LEVEL 1 DROPDOWN MENU */}
+            <div className="relative group">
+              <button
+                onClick={() => {
+                  soundFx.playPop();
+                  setDropdownOpen(!dropdownOpen);
+                }}
+                onMouseEnter={() => setDropdownOpen(true)}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-extrabold text-sm transition-all duration-200 ${
+                  isLevel1Active
+                    ? 'bg-gradient-to-r from-pink-400 to-purple-400 text-white shadow-md scale-105'
+                    : 'text-slate-600 hover:text-pink-500 hover:bg-white/60'
+                }`}
+              >
+                <Sparkles className={`w-4 h-4 ${isLevel1Active ? 'text-white' : 'text-amber-500'}`} />
+                Level 1 🌟
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {/* Dropdown Menu Content */}
+              {dropdownOpen && (
+                <div 
+                  onMouseLeave={() => setDropdownOpen(false)}
+                  className="absolute top-full left-0 mt-2 w-56 bg-white rounded-2xl border-4 border-pink-200 shadow-2xl p-2 z-50 animate-popIn space-y-1"
                 >
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-pink-400'}`} />
-                  {item.label}
-                </button>
-              );
-            })}
+                  <button
+                    onClick={() => handleNavClick('level1_lessons')}
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-xs transition-all ${
+                      activeTab === 'level1_lessons'
+                        ? 'bg-pink-100 text-pink-700 font-black'
+                        : 'text-slate-700 hover:bg-pink-50'
+                    }`}
+                  >
+                    <Film className="w-4 h-4 text-pink-500 shrink-0" />
+                    <div>
+                      <span className="block font-black text-sm">Video Bài Học 🎬</span>
+                      <span className="block text-[10px] text-slate-500">5 Mũi Móc Cơ Bản</span>
+                    </div>
+                  </button>
+
+                  <button
+                    onClick={() => handleNavClick('projects')}
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-xs transition-all ${
+                      activeTab === 'projects'
+                        ? 'bg-purple-100 text-purple-700 font-black'
+                        : 'text-slate-700 hover:bg-pink-50'
+                    }`}
+                  >
+                    <Heart className="w-4 h-4 text-purple-500 shrink-0" />
+                    <div>
+                      <span className="block font-black text-sm">Dự Án / Project 🐙</span>
+                      <span className="block text-[10px] text-slate-500">Thú Bông Amigurumi</span>
+                    </div>
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* TRẮC NGHIỆM TAB */}
+            <button
+              onClick={() => handleNavClick('quiz')}
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-extrabold text-sm transition-all duration-200 ${
+                activeTab === 'quiz'
+                  ? 'bg-gradient-to-r from-pink-400 to-purple-400 text-white shadow-md scale-105'
+                  : 'text-slate-600 hover:text-pink-500 hover:bg-white/60'
+              }`}
+            >
+              <HelpCircle className={`w-4 h-4 ${activeTab === 'quiz' ? 'text-white' : 'text-pink-400'}`} />
+              Trắc Nghiệm & Ký Hiệu 🎯
+            </button>
+
+            {/* PHỐI MÀU TAB */}
+            <button
+              onClick={() => handleNavClick('mixer')}
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-extrabold text-sm transition-all duration-200 ${
+                activeTab === 'mixer'
+                  ? 'bg-gradient-to-r from-pink-400 to-purple-400 text-white shadow-md scale-105'
+                  : 'text-slate-600 hover:text-pink-500 hover:bg-white/60'
+              }`}
+            >
+              <Palette className={`w-4 h-4 ${activeTab === 'mixer' ? 'text-white' : 'text-purple-400'}`} />
+              Phối Màu & Dụng Cụ 🎨
+            </button>
+
           </nav>
 
           {/* Right Status Actions */}
@@ -102,24 +167,60 @@ export default function Navbar({ activeTab, setActiveTab, stars, badgesUnlocked,
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t-2 border-pink-100 space-y-2 bg-amber-50/90 rounded-b-2xl px-2">
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              const isActive = activeTab === item.id;
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => handleNavClick(item.id)}
-                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl font-bold text-base transition-all ${
-                    isActive
-                      ? 'bg-gradient-to-r from-pink-400 to-purple-400 text-white shadow-md'
-                      : 'bg-white text-slate-700 hover:bg-pink-100'
-                  }`}
-                >
-                  <Icon className="w-5 h-5" />
-                  {item.label}
-                </button>
-              );
-            })}
+            
+            {/* Mobile Level 1 Group */}
+            <div className="bg-white p-3 rounded-2xl border-2 border-amber-200 space-y-2">
+              <span className="text-xs font-black text-amber-700 block uppercase px-2">
+                🌟 LEVEL 1:
+              </span>
+              <button
+                onClick={() => handleNavClick('level1_lessons')}
+                className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold text-sm transition-all ${
+                  activeTab === 'level1_lessons'
+                    ? 'bg-pink-500 text-white shadow-md'
+                    : 'bg-slate-50 text-slate-700'
+                }`}
+              >
+                <Film className="w-4 h-4" />
+                Video Bài Học 🎬 (5 Mũi)
+              </button>
+              <button
+                onClick={() => handleNavClick('projects')}
+                className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold text-sm transition-all ${
+                  activeTab === 'projects'
+                    ? 'bg-purple-500 text-white shadow-md'
+                    : 'bg-slate-50 text-slate-700'
+                }`}
+              >
+                <Heart className="w-4 h-4" />
+                Dự Án / Project 🐙
+              </button>
+            </div>
+
+            <button
+              onClick={() => handleNavClick('quiz')}
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl font-bold text-base transition-all ${
+                activeTab === 'quiz'
+                  ? 'bg-gradient-to-r from-pink-400 to-purple-400 text-white shadow-md'
+                  : 'bg-white text-slate-700'
+              }`}
+            >
+              <HelpCircle className="w-5 h-5" />
+              Trắc Nghiệm & Ký Hiệu 🎯
+            </button>
+
+            <button
+              onClick={() => handleNavClick('mixer')}
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl font-bold text-base transition-all ${
+                activeTab === 'mixer'
+                  ? 'bg-gradient-to-r from-pink-400 to-purple-400 text-white shadow-md'
+                  : 'bg-white text-slate-700'
+              }`}
+            >
+              <Palette className="w-5 h-5" />
+              Phối Màu & Dụng Cụ 🎨
+            </button>
+
           </div>
         )}
       </div>

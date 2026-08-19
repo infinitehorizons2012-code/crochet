@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
+import Level1Lessons from './components/Level1Lessons';
 import SymbolQuiz from './components/SymbolQuiz';
 import ProjectCatalog from './components/ProjectCatalog';
 import YarnMixer from './components/YarnMixer';
@@ -51,7 +52,7 @@ class ErrorBoundary extends React.Component {
 }
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('quiz');
+  const [activeTab, setActiveTab] = useState('level1_lessons');
   const [isMuted, setIsMuted] = useState(false);
 
   // Safe localStorage loading with try-catch
@@ -114,6 +115,13 @@ export default function App() {
         <main className="flex-grow">
           
           {/* Tab Router */}
+          {activeTab === 'level1_lessons' && (
+            <Level1Lessons
+              onAddStars={handleAddStars}
+              onUnlockBadge={handleUnlockBadge}
+            />
+          )}
+
           {activeTab === 'quiz' && (
             <SymbolQuiz
               onAddStars={handleAddStars}
