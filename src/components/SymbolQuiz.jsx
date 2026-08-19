@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { HelpCircle, CheckCircle2, XCircle, RotateCcw, Award, Sparkles, Star, ChevronRight, Layers, Shuffle, Trophy, Flame } from 'lucide-react';
+import { HelpCircle, CheckCircle2, XCircle, RotateCcw, Award, Sparkles, Star, ChevronRight, Layers, Shuffle, Trophy, Flame, Film, Play } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { soundFx } from '../utils/sound';
 import { CROCHET_SYMBOLS } from '../data/crochetSymbols';
 import SymbolRenderer from './SymbolRenderer';
+import CrochetMotionPlayer from './CrochetMotionPlayer';
 
 export default function SymbolQuiz({ onAddStars, onUnlockBadge }) {
   const [activeSubMode, setActiveSubMode] = useState('quiz_symbol_to_name'); // 'flashcard', 'quiz_symbol_to_name', 'quiz_name_to_symbol'
@@ -157,6 +158,21 @@ export default function SymbolQuiz({ onAddStars, onUnlockBadge }) {
         >
           <Sparkles className="w-4 h-4" />
           Dạng 2: Cho Tên ➔ Đoán Hình
+        </button>
+
+        <button
+          onClick={() => {
+            soundFx.playPop();
+            setActiveSubMode('quiz_video_to_name');
+          }}
+          className={`flex items-center gap-2 px-5 py-3 rounded-xl font-extrabold text-sm transition-all ${
+            activeSubMode === 'quiz_video_to_name'
+              ? 'bg-gradient-to-r from-indigo-500 via-pink-500 to-rose-500 text-white shadow-md scale-105'
+              : 'bg-white text-slate-700 hover:bg-pink-100'
+          }`}
+        >
+          <Film className="w-4 h-4" />
+          🎬 Dạng 3: Xem Video ➔ Đoán Tên
         </button>
 
         <button
@@ -342,6 +358,96 @@ export default function SymbolQuiz({ onAddStars, onUnlockBadge }) {
                 className="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-black text-base shadow-lg hover:scale-105 transition-all flex items-center justify-center gap-2 shrink-0"
               >
                 Câu Tiếp Theo
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          )}
+
+        </div>
+      )}
+
+      {/* QUIZ MODE 3: VIDEO MOTION TO NAME */}
+      {activeSubMode === 'quiz_video_to_name' && currentQuestion && (
+        <div className="bg-white rounded-3xl border-4 border-indigo-200 shadow-2xl p-6 sm:p-8 space-y-6 max-w-3xl mx-auto text-center">
+          
+          <div className="space-y-1">
+            <span className="text-xs font-black bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full border border-indigo-200">
+              🎬 Trắc Nghiệm Video & Chuyển Động (Dạng 3)
+            </span>
+            <h3 className="text-xl sm:text-2xl font-black text-slate-800">
+              Xem chuyển động ngắn và đoán xem đây là thao tác móc của mũi nào?
+            </h3>
+          </div>
+
+          {/* Video / Motion Player */}
+          <div className="max-w-xl mx-auto">
+            <CrochetMotionPlayer symbol={currentQuestion} showSymbolOverlay={false} className="w-full" />
+          </div>
+
+          {/* 4 Multiple Choice Options */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            {options.map((option, idx) => {
+              const isSelected = selectedAnswer === option.id;
+              const isTarget = option.id === currentQuestion.id;
+
+              let btnStyle = "bg-slate-50 border-slate-200 text-slate-800 hover:border-indigo-300 hover:bg-indigo-50/50";
+              if (selectedAnswer !== null) {
+                if (isTarget) {
+                  btnStyle = "bg-emerald-500 text-white border-emerald-600 shadow-lg scale-102";
+                } else if (isSelected) {
+                  btnStyle = "bg-rose-500 text-white border-rose-600 animate-shake";
+                } else {
+                  btnStyle = "bg-slate-100 border-slate-200 opacity-50";
+                }
+              }
+
+              return (
+                <button
+                  key={option.id}
+                  disabled={selectedAnswer !== null}
+                  onClick={() => handleSelectAnswer(option)}
+                  className={`p-4 rounded-2xl border-4 font-black text-base flex items-center justify-between transition-all duration-200 ${btnStyle}`}
+                >
+                  <div className="flex items-center gap-3 text-left">
+                    <span className="w-8 h-8 rounded-full bg-white/20 border border-white/40 flex items-center justify-center text-xs font-black shrink-0">
+                      {String.fromCharCode(65 + idx)}
+                    </span>
+                    <div>
+                      <span className="block font-black text-sm">{option.nameVi}</span>
+                      <span className="block text-xs opacity-80">{option.nameEn} ({option.abbr})</span>
+                    </div>
+                  </div>
+
+                  {selectedAnswer !== null && isTarget && <CheckCircle2 className="w-6 h-6 text-white" />}
+                  {selectedAnswer !== null && isSelected && !isTarget && <XCircle className="w-6 h-6 text-white" />}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Answer Feedback Banner & Next Button */}
+          {selectedAnswer !== null && (
+            <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4 animate-popIn">
+              <div className="text-left space-y-1">
+                {isCorrect ? (
+                  <div className="flex items-center gap-2 text-emerald-600 font-black text-lg">
+                    <CheckCircle2 className="w-6 h-6" />
+                    Bé Nhìn Thao Tác Chuẩn Quá! (+5 ⭐)
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-2 text-rose-600 font-black text-lg">
+                    <XCircle className="w-6 h-6" />
+                    Chưa chính xác rồi! Thao tác trong video là: {currentQuestion.nameVi} ({currentQuestion.abbr})
+                  </div>
+                )}
+                <p className="text-xs font-bold text-slate-500">{currentQuestion.description}</p>
+              </div>
+
+              <button
+                onClick={handleNextQuestion}
+                className="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-black text-base shadow-lg hover:scale-105 transition-all flex items-center justify-center gap-2 shrink-0"
+              >
+                Video Tiếp Theo
                 <ChevronRight className="w-5 h-5" />
               </button>
             </div>
