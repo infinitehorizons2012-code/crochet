@@ -54,7 +54,7 @@ export const CROCHET_SYMBOLS = [
     category: 'Cơ Bản',
     svgType: 'dc_shape',
     description: 'Chữ T có 1 gạch ngang ở thân - cao gấp đôi mũi đơn.',
-    videoUrl: '',
+    videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787132252/crochet_kids_symbols/dc_1787132247535.mp4',
     imageUrl: '',
   },
   {
