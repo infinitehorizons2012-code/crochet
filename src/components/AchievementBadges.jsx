@@ -46,6 +46,13 @@ export default function AchievementBadges({ badges, stars }) {
       icon: '✨',
       description: 'Tích lũy từ 50 Ngôi Sao trở lên.',
       color: 'from-yellow-400 to-amber-500'
+    },
+    {
+      id: 'quiz_master',
+      title: 'Bậc Thầy Trắc Nghiệm 🎯',
+      icon: '🎯',
+      description: 'Đạt chuỗi trả lời đúng đố vui ký hiệu.',
+      color: 'from-purple-500 to-indigo-600'
     }
   ];
 

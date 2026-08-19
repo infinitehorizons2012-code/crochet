@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Volume2, VolumeX, Star, Award, Sparkles, Menu, X, BookOpen, Heart, Palette } from 'lucide-react';
+import { Volume2, VolumeX, Star, Award, Sparkles, Menu, X, BookOpen, Heart, Palette, HelpCircle } from 'lucide-react';
 import { soundFx } from '../utils/sound';
 
 export default function Navbar({ activeTab, setActiveTab, stars, badgesUnlocked, isMuted, setIsMuted }) {
@@ -7,6 +7,7 @@ export default function Navbar({ activeTab, setActiveTab, stars, badgesUnlocked,
 
   const navItems = [
     { id: 'workshop', label: 'Học Mũi Móc', icon: BookOpen },
+    { id: 'quiz', label: 'Trắc Nghiệm 🎯', icon: HelpCircle },
     { id: 'projects', label: 'Dự Án Cho Bé', icon: Heart },
     { id: 'mixer', label: 'Phối Màu & Dụng Cụ', icon: Palette },
     { id: 'badges', label: 'Huy Chương', icon: Award },

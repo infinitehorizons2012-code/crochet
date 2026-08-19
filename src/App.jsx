@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import StitchWorkshop from './components/StitchWorkshop';
+import SymbolQuiz from './components/SymbolQuiz';
 import ProjectCatalog from './components/ProjectCatalog';
 import YarnMixer from './components/YarnMixer';
 import AchievementBadges from './components/AchievementBadges';
@@ -125,6 +126,13 @@ export default function App() {
           {/* Tab Router */}
           {activeTab === 'workshop' && (
             <StitchWorkshop
+              onAddStars={handleAddStars}
+              onUnlockBadge={handleUnlockBadge}
+            />
+          )}
+
+          {activeTab === 'quiz' && (
+            <SymbolQuiz
               onAddStars={handleAddStars}
               onUnlockBadge={handleUnlockBadge}
             />
