@@ -127,7 +127,7 @@ export default function StitchWorkshop({ onAddStars, onUnlockBadge }) {
   };
 
   return (
-    <div className="space-y-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div id="stitch-workshop" className="space-y-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 scroll-mt-24">
       
       {/* Header Banner */}
       <div className="bg-gradient-to-r from-pink-400 via-purple-400 to-amber-300 p-8 rounded-3xl text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 border-4 border-white">

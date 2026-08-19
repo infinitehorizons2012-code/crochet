@@ -6,6 +6,12 @@ export default function Hero({ onStartLearning, onExploreProjects }) {
   const handleStart = () => {
     soundFx.playSuccess();
     onStartLearning();
+    setTimeout(() => {
+      const el = document.getElementById('stitch-workshop');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 50);
   };
 
   const handleProjects = () => {

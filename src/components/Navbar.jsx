@@ -22,6 +22,14 @@ export default function Navbar({ activeTab, setActiveTab, stars, badgesUnlocked,
     soundFx.playPop();
     setActiveTab(tabId);
     setMobileMenuOpen(false);
+    if (tabId === 'workshop') {
+      setTimeout(() => {
+        const el = document.getElementById('stitch-workshop');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 50);
+    }
   };
 
   return (
