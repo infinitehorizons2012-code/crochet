@@ -19,7 +19,7 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
     setDropdownOpen(false);
   };
 
-  const isLevel1Active = activeTab === 'level1_lessons' || activeTab === 'projects';
+  const isLevel1Active = activeTab === 'level1_lessons' || activeTab === 'projects' || activeTab === 'level1_quiz';
 
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b-4 border-pink-200 shadow-sm">
@@ -101,7 +101,22 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                     <Heart className="w-4 h-4 text-purple-500 shrink-0" />
                     <div>
                       <span className="block font-black text-sm">Dự Án / Project 🐙</span>
-                      <span className="block text-[10px] text-slate-500">Thú Bông Amigurumi</span>
+                      <span className="block text-[10px] text-slate-500">7 Mẫu Móc Level 1</span>
+                    </div>
+                  </button>
+
+                  <button
+                    onClick={() => handleNavClick('level1_quiz')}
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-xs transition-all ${
+                      activeTab === 'level1_quiz'
+                        ? 'bg-amber-100 text-amber-800 font-black'
+                        : 'text-slate-700 hover:bg-pink-50'
+                    }`}
+                  >
+                    <HelpCircle className="w-4 h-4 text-amber-500 shrink-0" />
+                    <div>
+                      <span className="block font-black text-sm">Trắc Nghiệm Đọc Chart 🎯</span>
+                      <span className="block text-[10px] text-slate-500">8 Ký Hiệu Chart Level 1</span>
                     </div>
                   </button>
                 </div>
