@@ -10,7 +10,7 @@ import CrochetMotionPlayer from './CrochetMotionPlayer';
 const LEVEL1_SYMBOL_IDS = ['begin', 'ch', 'sl_st', 'sc', 'hdc', 'dc', 'tr'];
 
 export default function Level1Lessons({ onAddStars, onUnlockBadge }) {
-  const level1Symbols = CROCHET_SYMBOLS.filter((s) => LEVEL1_SYMBOL_IDS.includes(s.id));
+  const level1Symbols = LEVEL1_SYMBOL_IDS.map((id) => CROCHET_SYMBOLS.find((s) => s.id === id)).filter(Boolean);
   const [selectedId, setSelectedId] = useState('begin');
   const [isFlipped, setIsFlipped] = useState(false);
   const [completedStitches, setCompletedStitches] = useState([]);
