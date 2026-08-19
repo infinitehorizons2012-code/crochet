@@ -9,7 +9,6 @@ export default function Navbar({ activeTab, setActiveTab, stars, badgesUnlocked,
     { id: 'quiz', label: 'Trắc Nghiệm & Ký Hiệu 🎯', icon: HelpCircle },
     { id: 'projects', label: 'Dự Án Cho Bé', icon: Heart },
     { id: 'mixer', label: 'Phối Màu & Dụng Cụ', icon: Palette },
-    { id: 'badges', label: 'Huy Chương', icon: Award },
   ];
 
   const handleMuteToggle = () => {
@@ -80,15 +79,6 @@ export default function Navbar({ activeTab, setActiveTab, stars, badgesUnlocked,
               <Star className="w-5 h-5 text-amber-500 fill-amber-400 animate-pulse" />
               <span>{stars} ⭐</span>
             </div>
-
-            {/* Badges Counter */}
-            <button 
-              onClick={() => handleNavClick('badges')}
-              className="hidden sm:flex items-center gap-1.5 bg-purple-100 border-2 border-purple-300 text-purple-800 px-3.5 py-1.5 rounded-full font-black text-sm hover:bg-purple-200 transition-colors"
-            >
-              <Award className="w-5 h-5 text-purple-500" />
-              <span>{badgesUnlocked}/6</span>
-            </button>
 
             {/* Mute Button */}
             <button

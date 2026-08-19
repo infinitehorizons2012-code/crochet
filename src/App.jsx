@@ -135,13 +135,6 @@ export default function App() {
             />
           )}
 
-          {activeTab === 'badges' && (
-            <AchievementBadges
-              badges={badges}
-              stars={stars}
-            />
-          )}
-
         </main>
 
         {/* Footer */}
