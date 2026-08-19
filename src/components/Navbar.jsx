@@ -6,6 +6,8 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
+  const [dropdown2Open, setDropdown2Open] = useState(false);
+
   const handleMuteToggle = () => {
     const muted = soundFx.toggleMute();
     setIsMuted(muted);
@@ -17,9 +19,11 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
     setActiveTab(tabId);
     setMobileMenuOpen(false);
     setDropdownOpen(false);
+    setDropdown2Open(false);
   };
 
   const isLevel1Active = activeTab === 'level1_lessons' || activeTab === 'projects' || activeTab === 'level1_quiz';
+  const isLevel2Active = activeTab === 'level2_lessons' || activeTab === 'level2_projects' || activeTab === 'level2_quiz';
 
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b-4 border-pink-200 shadow-sm">
@@ -56,8 +60,12 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                 onClick={() => {
                   soundFx.playPop();
                   setDropdownOpen(!dropdownOpen);
+                  setDropdown2Open(false);
                 }}
-                onMouseEnter={() => setDropdownOpen(true)}
+                onMouseEnter={() => {
+                  setDropdownOpen(true);
+                  setDropdown2Open(false);
+                }}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-extrabold text-sm transition-all duration-200 ${
                   isLevel1Active
                     ? 'bg-gradient-to-r from-pink-400 to-purple-400 text-white shadow-md scale-105'
@@ -69,7 +77,7 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                 <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`} />
               </button>
 
-              {/* Dropdown Menu Content */}
+              {/* Dropdown Menu Content Level 1 */}
               {dropdownOpen && (
                 <div 
                   onMouseLeave={() => setDropdownOpen(false)}
@@ -86,7 +94,7 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                     <Film className="w-4 h-4 text-pink-500 shrink-0" />
                     <div>
                       <span className="block font-black text-sm">Video Bài Học 🎬</span>
-                      <span className="block text-[10px] text-slate-500">5 Mũi Móc Cơ Bản</span>
+                      <span className="block text-[10px] text-slate-500">8 Mũi Móc Cơ Bản</span>
                     </div>
                   </button>
 
@@ -122,6 +130,54 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                 </div>
               )}
             </div>
+
+            {/* LEVEL 2 DROPDOWN MENU */}
+            <div className="relative group">
+              <button
+                onClick={() => {
+                  soundFx.playPop();
+                  setDropdown2Open(!dropdown2Open);
+                  setDropdownOpen(false);
+                }}
+                onMouseEnter={() => {
+                  setDropdown2Open(true);
+                  setDropdownOpen(false);
+                }}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-extrabold text-sm transition-all duration-200 ${
+                  isLevel2Active
+                    ? 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-md scale-105'
+                    : 'text-slate-600 hover:text-purple-600 hover:bg-white/60'
+                }`}
+              >
+                <Sparkles className={`w-4 h-4 ${isLevel2Active ? 'text-white' : 'text-purple-500'}`} />
+                Level 2 🚀
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${dropdown2Open ? 'rotate-180' : ''}`} />
+              </button>
+
+              {/* Dropdown Menu Content Level 2 */}
+              {dropdown2Open && (
+                <div 
+                  onMouseLeave={() => setDropdown2Open(false)}
+                  className="absolute top-full left-0 mt-2 w-64 bg-white rounded-2xl border-4 border-purple-200 shadow-2xl p-2 z-50 animate-popIn space-y-1"
+                >
+                  <button
+                    onClick={() => handleNavClick('level2_lessons')}
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-xs transition-all ${
+                      activeTab === 'level2_lessons'
+                        ? 'bg-purple-100 text-purple-700 font-black'
+                        : 'text-slate-700 hover:bg-purple-50'
+                    }`}
+                  >
+                    <Film className="w-4 h-4 text-purple-500 shrink-0" />
+                    <div>
+                      <span className="block font-black text-sm">Vòng Tròn Ma Thuật & Cách Kết 🌀</span>
+                      <span className="block text-[10px] text-slate-500">Magic Ring & Joining MR</span>
+                    </div>
+                  </button>
+                </div>
+              )}
+            </div>
+
           </nav>
 
           {/* Right Status Actions */}
@@ -193,6 +249,24 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
               >
                 <HelpCircle className="w-4 h-4" />
                 Trắc Nghiệm Đọc Chart 🎯
+              </button>
+            </div>
+
+            {/* Mobile Level 2 Group */}
+            <div className="bg-white p-3 rounded-2xl border-2 border-purple-200 space-y-2">
+              <span className="text-xs font-black text-purple-700 block uppercase px-2">
+                🚀 LEVEL 2:
+              </span>
+              <button
+                onClick={() => handleNavClick('level2_lessons')}
+                className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold text-sm transition-all ${
+                  activeTab === 'level2_lessons'
+                    ? 'bg-purple-600 text-white shadow-md'
+                    : 'bg-slate-50 text-slate-700'
+                }`}
+              >
+                <Film className="w-4 h-4" />
+                Vòng Tròn Ma Thuật & Cách Kết 🌀
               </button>
             </div>
           </div>

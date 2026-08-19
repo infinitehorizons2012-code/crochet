@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Level1Lessons from './components/Level1Lessons';
 import Level1Projects from './components/Level1Projects';
 import Level1Quiz from './components/Level1Quiz';
+import Level2Lessons from './components/Level2Lessons';
 import SymbolQuiz from './components/SymbolQuiz';
 import YarnMixer from './components/YarnMixer';
 import AchievementBadges from './components/AchievementBadges';
@@ -139,6 +140,13 @@ export default function App() {
 
           {activeTab === 'level1_quiz' && (
             <Level1Quiz
+              onAddStars={handleAddStars}
+              onUnlockBadge={handleUnlockBadge}
+            />
+          )}
+
+          {activeTab === 'level2_lessons' && (
+            <Level2Lessons
               onAddStars={handleAddStars}
               onUnlockBadge={handleUnlockBadge}
             />

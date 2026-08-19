@@ -254,5 +254,27 @@ export const CROCHET_SYMBOLS = [
     description: 'Hình tam giác rỗng (△) - báo hiệu điểm bắt đầu.',
     videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787136394/crochet_kids_symbols/begin_1787136392066.mp4',
     imageUrl: '',
+  },
+  {
+    id: 'mr',
+    abbr: 'MR',
+    nameEn: 'Magic Ring',
+    nameVi: 'Vòng Tròn Ma Thuật (Magic Ring)',
+    category: 'Level 2 Cơ Bản',
+    svgType: 'mr_shape',
+    description: 'Vòng tròn khép kín điều chỉnh linh hoạt - gốc tạo hình thú bông.',
+    videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787146283/crochet_kids_symbols_level2/mr_magic_ring.mp4',
+    imageUrl: '',
+  },
+  {
+    id: 'join_mr',
+    abbr: 'Join MR',
+    nameEn: 'Joining Magic Ring',
+    nameVi: 'Cách Kết Vòng Tròn Ma Thuật',
+    category: 'Level 2 Cơ Bản',
+    svgType: 'join_mr_shape',
+    description: 'Rút dây thắt chặt tâm vòng tròn và móc mũi dời kết thúc vòng 1 mượt mà.',
+    videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787146287/crochet_kids_symbols_level2/join_mr_joining.mp4',
+    imageUrl: '',
   }
 ];

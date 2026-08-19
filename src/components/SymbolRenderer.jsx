@@ -201,6 +201,25 @@ export default function SymbolRenderer({ type, className = "w-20 h-20", strokeCo
       case 'begin_triangle': // begin
         return <polygon points="50,20 20,80 80,80" {...strokeProps} />;
 
+      case 'mr_shape': // Magic Ring (MR)
+        return (
+          <g>
+            <circle cx="50" cy="50" r="28" strokeDasharray="8 4" {...strokeProps} />
+            <path d="M 50 15 C 30 15, 15 30, 15 50 C 15 70, 30 85, 50 85 C 70 85, 85 70, 85 50" {...strokeProps} />
+            <polygon points="50,10 60,18 48,25" fill={strokeColor} />
+          </g>
+        );
+
+      case 'join_mr_shape': // Joining MR
+        return (
+          <g>
+            <circle cx="50" cy="50" r="28" {...strokeProps} />
+            <circle cx="50" cy="22" r="7" fill={strokeColor} />
+            <path d="M 40 22 C 30 22, 22 30, 22 40" {...strokeProps} />
+            <polygon points="50,15 58,24 45,28" fill={strokeColor} />
+          </g>
+        );
+
       default:
         return <circle cx="50" cy="50" r="20" fill={strokeColor} />;
     }
