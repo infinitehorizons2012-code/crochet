@@ -7,27 +7,84 @@ import YarnMixer from './components/YarnMixer';
 import AchievementBadges from './components/AchievementBadges';
 import Footer from './components/Footer';
 
+// Simple Error Boundary Component to prevent white screen of death
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error("Crochet Kids Error Boundary caught an error:", error, errorInfo);
+  }
+
+  handleReset = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="min-h-screen bg-pink-50 flex items-center justify-center p-6 text-center">
+          <div className="bg-white p-8 rounded-3xl border-4 border-pink-300 shadow-2xl max-w-md space-y-4">
+            <div className="text-6xl">🧶</div>
+            <h2 className="text-2xl font-black text-slate-800">Ối! Có chút gián đoạn nhỏ 🎀</h2>
+            <p className="text-sm font-bold text-slate-600">
+              Đừng lo bé ơi! Hãy bấm nút bên dưới để khôi phục trang web lại bình thường nhé.
+            </p>
+            <button
+              onClick={this.handleReset}
+              className="px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white font-black rounded-2xl shadow-md hover:scale-105 transition-all"
+            >
+              Tải Lại Trang Web ✨
+            </button>
+          </div>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
 export default function App() {
   const [activeTab, setActiveTab] = useState('workshop');
   const [isMuted, setIsMuted] = useState(false);
 
-  // Load state from localStorage or default
+  // Safe localStorage loading with try-catch
   const [stars, setStars] = useState(() => {
-    const saved = localStorage.getItem('crochet_kids_stars');
-    return saved ? parseInt(saved, 10) : 20; // 20 starter stars
+    try {
+      const saved = localStorage.getItem('crochet_kids_stars');
+      const val = parseInt(saved, 10);
+      return isNaN(val) ? 20 : val;
+    } catch (e) {
+      return 20;
+    }
   });
 
   const [badges, setBadges] = useState(() => {
-    const saved = localStorage.getItem('crochet_kids_badges');
-    return saved ? JSON.parse(saved) : ['slip_knot_master'];
+    try {
+      const saved = localStorage.getItem('crochet_kids_badges');
+      return saved ? JSON.parse(saved) : ['slip_knot_master'];
+    } catch (e) {
+      return ['slip_knot_master'];
+    }
   });
 
   useEffect(() => {
-    localStorage.setItem('crochet_kids_stars', stars.toString());
+    try {
+      localStorage.setItem('crochet_kids_stars', stars.toString());
+    } catch (e) {}
   }, [stars]);
 
   useEffect(() => {
-    localStorage.setItem('crochet_kids_badges', JSON.stringify(badges));
+    try {
+      localStorage.setItem('crochet_kids_badges', JSON.stringify(badges));
+    } catch (e) {}
   }, [badges]);
 
   const handleAddStars = (amount) => {
@@ -41,63 +98,65 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-50/60 via-pink-50/40 to-purple-50/60 text-slate-800 flex flex-col font-sans">
-      
-      {/* Navigation Header */}
-      <Navbar
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        stars={stars}
-        badgesUnlocked={badges.length}
-        isMuted={isMuted}
-        setIsMuted={setIsMuted}
-      />
-
-      {/* Main Content Area */}
-      <main className="flex-grow">
+    <ErrorBoundary>
+      <div className="min-h-screen bg-gradient-to-b from-amber-50/60 via-pink-50/40 to-purple-50/60 text-slate-800 flex flex-col font-sans">
         
-        {/* Welcome Hero Banner (Shows on workshop tab) */}
-        {activeTab === 'workshop' && (
-          <Hero
-            onStartLearning={() => setActiveTab('workshop')}
-            onExploreProjects={() => setActiveTab('projects')}
-          />
-        )}
+        {/* Navigation Header */}
+        <Navbar
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          stars={stars}
+          badgesUnlocked={badges.length}
+          isMuted={isMuted}
+          setIsMuted={setIsMuted}
+        />
 
-        {/* Tab Router */}
-        {activeTab === 'workshop' && (
-          <StitchWorkshop
-            onAddStars={handleAddStars}
-            onUnlockBadge={handleUnlockBadge}
-          />
-        )}
+        {/* Main Content Area */}
+        <main className="flex-grow">
+          
+          {/* Welcome Hero Banner (Shows on workshop tab) */}
+          {activeTab === 'workshop' && (
+            <Hero
+              onStartLearning={() => setActiveTab('workshop')}
+              onExploreProjects={() => setActiveTab('projects')}
+            />
+          )}
 
-        {activeTab === 'projects' && (
-          <ProjectCatalog
-            onAddStars={handleAddStars}
-            onUnlockBadge={handleUnlockBadge}
-          />
-        )}
+          {/* Tab Router */}
+          {activeTab === 'workshop' && (
+            <StitchWorkshop
+              onAddStars={handleAddStars}
+              onUnlockBadge={handleUnlockBadge}
+            />
+          )}
 
-        {activeTab === 'mixer' && (
-          <YarnMixer
-            onAddStars={handleAddStars}
-            onUnlockBadge={handleUnlockBadge}
-          />
-        )}
+          {activeTab === 'projects' && (
+            <ProjectCatalog
+              onAddStars={handleAddStars}
+              onUnlockBadge={handleUnlockBadge}
+            />
+          )}
 
-        {activeTab === 'badges' && (
-          <AchievementBadges
-            badges={badges}
-            stars={stars}
-          />
-        )}
+          {activeTab === 'mixer' && (
+            <YarnMixer
+              onAddStars={handleAddStars}
+              onUnlockBadge={handleUnlockBadge}
+            />
+          )}
 
-      </main>
+          {activeTab === 'badges' && (
+            <AchievementBadges
+              badges={badges}
+              stars={stars}
+            />
+          )}
 
-      {/* Footer */}
-      <Footer />
+        </main>
 
-    </div>
+        {/* Footer */}
+        <Footer />
+
+      </div>
+    </ErrorBoundary>
   );
 }
