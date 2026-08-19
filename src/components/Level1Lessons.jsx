@@ -6,12 +6,12 @@ import { CROCHET_SYMBOLS } from '../data/crochetSymbols';
 import SymbolRenderer from './SymbolRenderer';
 import CrochetMotionPlayer from './CrochetMotionPlayer';
 
-// 7 stitches requested for Level 1: ch, sl_st, sc, hdc, dc, tr, begin
-const LEVEL1_SYMBOL_IDS = ['ch', 'sl_st', 'sc', 'hdc', 'dc', 'tr', 'begin'];
+// 7 stitches requested for Level 1 in order: begin, ch, sl_st, sc, hdc, dc, tr
+const LEVEL1_SYMBOL_IDS = ['begin', 'ch', 'sl_st', 'sc', 'hdc', 'dc', 'tr'];
 
 export default function Level1Lessons({ onAddStars, onUnlockBadge }) {
   const level1Symbols = CROCHET_SYMBOLS.filter((s) => LEVEL1_SYMBOL_IDS.includes(s.id));
-  const [selectedId, setSelectedId] = useState('ch');
+  const [selectedId, setSelectedId] = useState('begin');
   const [isFlipped, setIsFlipped] = useState(false);
   const [completedStitches, setCompletedStitches] = useState([]);
 

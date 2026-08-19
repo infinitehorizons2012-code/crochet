@@ -252,7 +252,7 @@ export const CROCHET_SYMBOLS = [
     category: 'Ký Hiệu Phụ',
     svgType: 'begin_triangle',
     description: 'Hình tam giác rỗng (△) - báo hiệu điểm bắt đầu.',
-    videoUrl: '',
+    videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787136394/crochet_kids_symbols/begin_1787136392066.mp4',
     imageUrl: '',
   }
 ];
