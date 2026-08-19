@@ -6,8 +6,8 @@ import { CROCHET_SYMBOLS } from '../data/crochetSymbols';
 import SymbolRenderer from './SymbolRenderer';
 import CrochetMotionPlayer from './CrochetMotionPlayer';
 
-// ONLY the 5 stitches requested for Level 1
-const LEVEL1_SYMBOL_IDS = ['ch', 'sl_st', 'sc', 'hdc', 'dc'];
+// 7 stitches requested for Level 1: ch, sl_st, sc, hdc, dc, tr, begin
+const LEVEL1_SYMBOL_IDS = ['ch', 'sl_st', 'sc', 'hdc', 'dc', 'tr', 'begin'];
 
 export default function Level1Lessons({ onAddStars, onUnlockBadge }) {
   const level1Symbols = CROCHET_SYMBOLS.filter((s) => LEVEL1_SYMBOL_IDS.includes(s.id));
@@ -34,7 +34,7 @@ export default function Level1Lessons({ onAddStars, onUnlockBadge }) {
       setCompletedStitches([...completedStitches, id]);
       onAddStars(15);
 
-      if (completedStitches.length + 1 >= 5) {
+      if (completedStitches.length + 1 >= level1Symbols.length) {
         onUnlockBadge('level1_master');
       }
     }
@@ -51,10 +51,10 @@ export default function Level1Lessons({ onAddStars, onUnlockBadge }) {
             Lớp Học Khởi Đầu Dành Cho Bé
           </div>
           <h2 className="text-3xl sm:text-4xl font-black">
-            Level 1: 5 Mũi Móc Len Cơ Bản 🌟
+            Level 1: 7 Mũi Móc Len Cơ Bản 🌟
           </h2>
           <p className="text-sm sm:text-base font-bold text-amber-50 max-w-xl">
-            Bé hãy xem video bài học và luyện tập flashcard cho 5 mũi móc căn bản: Mũi Bính (ch), Mũi Dời (sl st), Mũi Đơn (sc), Mũi Nửa Kép (hdc) và Mũi Kép Đơn (dc)!
+            Bé hãy xem video bài học và luyện tập flashcard cho các mũi móc căn bản: Mũi Bính (ch), Mũi Dời (sl st), Mũi Đơn (sc), Mũi Nửa Kép (hdc), Mũi Kép Đơn (dc), Mũi Kép Đôi (tr) và Điểm Bắt Đầu (begin)!
           </p>
         </div>
 
@@ -62,20 +62,20 @@ export default function Level1Lessons({ onAddStars, onUnlockBadge }) {
         <div className="bg-white/90 backdrop-blur-md text-slate-800 p-4 rounded-2xl border-2 border-white shadow-md text-center min-w-[180px]">
           <span className="block text-xs font-black text-slate-500">Tiến Trình Level 1</span>
           <span className="text-2xl font-black text-pink-600">
-            {completedStitches.length} / 5 Bài
+            {completedStitches.length} / {level1Symbols.length} Bài
           </span>
           <div className="w-full bg-slate-100 h-2.5 rounded-full mt-2 overflow-hidden border border-slate-200">
             <div 
               className="bg-gradient-to-r from-amber-400 to-pink-500 h-full rounded-full transition-all duration-500"
-              style={{ width: `${(completedStitches.length / 5) * 100}%` }}
+              style={{ width: `${(completedStitches.length / level1Symbols.length) * 100}%` }}
             />
           </div>
         </div>
       </div>
 
-      {/* 5 Stitch Selection Tabs */}
-      <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
-        {level1Symbols.map((item, idx) => {
+      {/* 7 Stitch Selection Tabs */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-3">
+        {level1Symbols.map((item) => {
           const isSelected = item.id === selectedId;
           const isDone = completedStitches.includes(item.id);
 
@@ -83,7 +83,7 @@ export default function Level1Lessons({ onAddStars, onUnlockBadge }) {
             <button
               key={item.id}
               onClick={() => handleSelectStitch(item.id)}
-              className={`p-4 rounded-2xl border-4 font-black transition-all duration-200 flex flex-col items-center justify-center gap-2 relative ${
+              className={`p-3.5 rounded-2xl border-4 font-black transition-all duration-200 flex flex-col items-center justify-center gap-2 relative ${
                 isSelected
                   ? 'bg-gradient-to-tr from-pink-400 to-purple-500 text-white border-white shadow-xl scale-105'
                   : isDone
@@ -92,18 +92,18 @@ export default function Level1Lessons({ onAddStars, onUnlockBadge }) {
               }`}
             >
               {isDone && (
-                <span className="absolute top-2 right-2 bg-emerald-500 text-white rounded-full p-0.5">
-                  <CheckCircle2 className="w-4 h-4" />
+                <span className="absolute top-1.5 right-1.5 bg-emerald-500 text-white rounded-full p-0.5">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
                 </span>
               )}
 
-              <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center p-1 shadow-inner">
-                <SymbolRenderer type={item.svgType} className="w-9 h-9" strokeColor="#0F172A" />
+              <div className="w-11 h-11 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center p-1 shadow-inner">
+                <SymbolRenderer type={item.svgType} className="w-8 h-8" strokeColor="#0F172A" />
               </div>
 
               <div className="text-center">
                 <span className="block text-xs font-black opacity-90">{item.abbr}</span>
-                <span className="block text-[11px] font-bold truncate max-w-[100px]">{item.nameVi.split('(')[0]}</span>
+                <span className="block text-[10px] font-bold truncate max-w-[80px]">{item.nameVi.split('(')[0]}</span>
               </div>
             </button>
           );
