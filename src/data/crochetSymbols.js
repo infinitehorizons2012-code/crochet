@@ -1,4 +1,4 @@
-// Database of 24 Official Crochet Symbols extracted from chart reference
+// Database of 24 Official Crochet Symbols with Cloudinary Media Support (Cloud Name: zopjocdi)
 
 export const CROCHET_SYMBOLS = [
   {
@@ -9,6 +9,9 @@ export const CROCHET_SYMBOLS = [
     category: 'Cơ Bản',
     svgType: 'ellipse',
     description: 'Vòng tròn bầu dục nằm ngang - đại diện cho 1 mũi bính.',
+    // Cloudinary media path / full URL (Cloud: zopjocdi)
+    videoUrl: '', // Ví dụ: 'crochet/ch_video.mp4' hoặc 'https://res.cloudinary.com/zopjocdi/video/upload/...'
+    imageUrl: '', // Ví dụ: 'crochet/ch_image.jpg'
   },
   {
     id: 'sl_st',
@@ -18,6 +21,8 @@ export const CROCHET_SYMBOLS = [
     category: 'Cơ Bản',
     svgType: 'dot',
     description: 'Chấm tròn đen tô kín - dùng để nối vòng hoặc trượt dời chân móc.',
+    videoUrl: '',
+    imageUrl: '',
   },
   {
     id: 'sc',
@@ -27,6 +32,8 @@ export const CROCHET_SYMBOLS = [
     category: 'Cơ Bản',
     svgType: 'plus_cross',
     description: 'Dấu cộng (+) hoặc dấu nhân (X) - mũi móc đơn chắc chắn.',
+    videoUrl: '',
+    imageUrl: '',
   },
   {
     id: 'hdc',
@@ -36,6 +43,8 @@ export const CROCHET_SYMBOLS = [
     category: 'Cơ Bản',
     svgType: 't_shape',
     description: 'Chữ T đơn giản - mũi móc có độ cao trung bình.',
+    videoUrl: '',
+    imageUrl: '',
   },
   {
     id: 'dc',
@@ -45,6 +54,8 @@ export const CROCHET_SYMBOLS = [
     category: 'Cơ Bản',
     svgType: 'dc_shape',
     description: 'Chữ T có 1 gạch ngang ở thân - cao gấp đôi mũi đơn.',
+    videoUrl: '',
+    imageUrl: '',
   },
   {
     id: 'tr',
@@ -54,6 +65,8 @@ export const CROCHET_SYMBOLS = [
     category: 'Cơ Bản',
     svgType: 'tr_shape',
     description: 'Chữ T có 2 gạch ngang ở thân - mũi móc cao dài.',
+    videoUrl: '',
+    imageUrl: '',
   },
   {
     id: 'dtr',
@@ -63,6 +76,8 @@ export const CROCHET_SYMBOLS = [
     category: 'Nâng Cao',
     svgType: 'dtr_shape',
     description: 'Chữ T có 3 gạch ngang ở thân.',
+    videoUrl: '',
+    imageUrl: '',
   },
   {
     id: 'sc2tog',
@@ -72,6 +87,8 @@ export const CROCHET_SYMBOLS = [
     category: 'Giảm Mũi',
     svgType: 'sc2tog_shape',
     description: '2 mũi đơn chụm lại 1 đầu phía trên (giảm 1 mũi).',
+    videoUrl: '',
+    imageUrl: '',
   },
   {
     id: 'sc3tog',
@@ -81,6 +98,8 @@ export const CROCHET_SYMBOLS = [
     category: 'Giảm Mũi',
     svgType: 'sc3tog_shape',
     description: '3 mũi đơn chụm lại 1 đầu phía trên (giảm 2 mũi).',
+    videoUrl: '',
+    imageUrl: '',
   },
   {
     id: 'dc2tog',
@@ -90,6 +109,8 @@ export const CROCHET_SYMBOLS = [
     category: 'Giảm Mũi',
     svgType: 'dc2tog_shape',
     description: '2 mũi kép chụm đầu phía trên.',
+    videoUrl: '',
+    imageUrl: '',
   },
   {
     id: 'dc3tog',
@@ -99,6 +120,8 @@ export const CROCHET_SYMBOLS = [
     category: 'Giảm Mũi',
     svgType: 'dc3tog_shape',
     description: '3 mũi kép chụm đầu phía trên.',
+    videoUrl: '',
+    imageUrl: '',
   },
   {
     id: 'cluster_3dc',
@@ -108,6 +131,8 @@ export const CROCHET_SYMBOLS = [
     category: 'Họa Tiết',
     svgType: 'cluster3dc_shape',
     description: 'Hình quả trám/hạt lúa - 3 mũi kép chụm cả đầu lẫn chân.',
+    videoUrl: '',
+    imageUrl: '',
   },
   {
     id: 'popcorn_5dc',
@@ -117,6 +142,8 @@ export const CROCHET_SYMBOLS = [
     category: 'Họa Tiết',
     svgType: 'popcorn_shape',
     description: '5 mũi kép chụm lại có vòng cung tròn phía trên.',
+    videoUrl: '',
+    imageUrl: '',
   },
   {
     id: 'shell_5dc',
@@ -126,6 +153,8 @@ export const CROCHET_SYMBOLS = [
     category: 'Họa Tiết',
     svgType: 'shell_shape',
     description: '5 mũi kép chung 1 chân xòe ra hình chiếc quạt/vỏ sò.',
+    videoUrl: '',
+    imageUrl: '',
   },
   {
     id: 'picot_ch3',
@@ -135,6 +164,8 @@ export const CROCHET_SYMBOLS = [
     category: 'Họa Tiết',
     svgType: 'picot_shape',
     description: 'Vòng nụ nhỏ tạo bởi 3 mũi bính chụm lại.',
+    videoUrl: '',
+    imageUrl: '',
   },
   {
     id: 'fpdc',
@@ -144,6 +175,8 @@ export const CROCHET_SYMBOLS = [
     category: 'Ngoặc Chân',
     svgType: 'fpdc_shape',
     description: 'Mũi kép có móc câu quay sang trái ở chân mũi.',
+    videoUrl: '',
+    imageUrl: '',
   },
   {
     id: 'bpdc',
@@ -153,6 +186,8 @@ export const CROCHET_SYMBOLS = [
     category: 'Ngoặc Chân',
     svgType: 'bpdc_shape',
     description: 'Mũi kép có móc câu quay sang phải ở chân mũi.',
+    videoUrl: '',
+    imageUrl: '',
   },
   {
     id: 'blo',
@@ -162,6 +197,8 @@ export const CROCHET_SYMBOLS = [
     category: 'Chân Móc',
     svgType: 'blo_shape',
     description: 'Vòng cung ngửa lên (⌒) - chỉ móc vào nửa chân sau.',
+    videoUrl: '',
+    imageUrl: '',
   },
   {
     id: 'flo',
@@ -171,6 +208,8 @@ export const CROCHET_SYMBOLS = [
     category: 'Chân Móc',
     svgType: 'flo_shape',
     description: 'Vòng cung ngửa xuống (⌣) - chỉ móc vào nửa chân trước.',
+    videoUrl: '',
+    imageUrl: '',
   },
   {
     id: 'fsc',
@@ -180,6 +219,8 @@ export const CROCHET_SYMBOLS = [
     category: 'Khởi Tạo',
     svgType: 'fsc_shape',
     description: 'Dấu cộng (+) có vòng tròn ở dưới chân.',
+    videoUrl: '',
+    imageUrl: '',
   },
   {
     id: 'fdc',
@@ -189,6 +230,8 @@ export const CROCHET_SYMBOLS = [
     category: 'Khởi Tạo',
     svgType: 'fdc_shape',
     description: 'Chữ T có gạch ngang và vòng tròn ở dưới chân.',
+    videoUrl: '',
+    imageUrl: '',
   },
   {
     id: 'end',
@@ -198,6 +241,8 @@ export const CROCHET_SYMBOLS = [
     category: 'Ký Hiệu Phụ',
     svgType: 'end_triangle',
     description: 'Hình tam giác đen tô kín (▲) - báo hiệu kết thúc.',
+    videoUrl: '',
+    imageUrl: '',
   },
   {
     id: 'begin',
@@ -207,5 +252,7 @@ export const CROCHET_SYMBOLS = [
     category: 'Ký Hiệu Phụ',
     svgType: 'begin_triangle',
     description: 'Hình tam giác rỗng (△) - báo hiệu điểm bắt đầu.',
+    videoUrl: '',
+    imageUrl: '',
   }
 ];
