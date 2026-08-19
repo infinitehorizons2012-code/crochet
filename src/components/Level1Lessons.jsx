@@ -6,8 +6,8 @@ import { CROCHET_SYMBOLS } from '../data/crochetSymbols';
 import SymbolRenderer from './SymbolRenderer';
 import CrochetMotionPlayer from './CrochetMotionPlayer';
 
-// 7 stitches requested for Level 1 in order: begin, ch, sl_st, sc, hdc, dc, tr
-const LEVEL1_SYMBOL_IDS = ['begin', 'ch', 'sl_st', 'sc', 'hdc', 'dc', 'tr'];
+// 8 stitches requested for Level 1 in order: begin, ch, sl_st, sc, hdc, dc, tr, dc2tog
+const LEVEL1_SYMBOL_IDS = ['begin', 'ch', 'sl_st', 'sc', 'hdc', 'dc', 'tr', 'dc2tog'];
 
 export default function Level1Lessons({ onAddStars, onUnlockBadge }) {
   const level1Symbols = LEVEL1_SYMBOL_IDS.map((id) => CROCHET_SYMBOLS.find((s) => s.id === id)).filter(Boolean);
@@ -51,10 +51,10 @@ export default function Level1Lessons({ onAddStars, onUnlockBadge }) {
             Lớp Học Khởi Đầu Dành Cho Bé
           </div>
           <h2 className="text-3xl sm:text-4xl font-black">
-            Level 1: 7 Mũi Móc Len Cơ Bản 🌟
+            Level 1: 8 Mũi Móc Len Cơ Bản 🌟
           </h2>
           <p className="text-sm sm:text-base font-bold text-amber-50 max-w-xl">
-            Bé hãy xem video bài học và luyện tập flashcard cho các mũi móc căn bản: Mũi Bính (ch), Mũi Dời (sl st), Mũi Đơn (sc), Mũi Nửa Kép (hdc), Mũi Kép Đơn (dc), Mũi Kép Đôi (tr) và Điểm Bắt Đầu (begin)!
+            Bé hãy xem video bài học và luyện tập flashcard cho các mũi móc căn bản: Mũi Bính (ch), Mũi Dời (sl st), Mũi Đơn (sc), Mũi Nửa Kép (hdc), Mũi Kép Đơn (dc), Mũi Kép Đôi (tr), Điểm Bắt Đầu (begin) và Mũi Giảm 2 Kép (dc2tog)!
           </p>
         </div>
 
@@ -73,8 +73,8 @@ export default function Level1Lessons({ onAddStars, onUnlockBadge }) {
         </div>
       </div>
 
-      {/* 7 Stitch Selection Tabs */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-3">
+      {/* 8 Stitch Selection Tabs */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-2.5">
         {level1Symbols.map((item) => {
           const isSelected = item.id === selectedId;
           const isDone = completedStitches.includes(item.id);

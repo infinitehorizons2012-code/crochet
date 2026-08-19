@@ -109,7 +109,7 @@ export const CROCHET_SYMBOLS = [
     category: 'Giảm Mũi',
     svgType: 'dc2tog_shape',
     description: '2 mũi kép chụm đầu phía trên.',
-    videoUrl: '',
+    videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787137404/crochet_kids_symbols/dc2tog_1787137400372.mp4',
     imageUrl: '',
   },
   {
