@@ -1,0 +1,30 @@
+{
+  "name": "crochet",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "homepage": "https://infinitehorizons2012-code.github.io/crochet/",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.5.4",
+    "canvas-confetti": "^1.9.4",
+    "gh-pages": "^6.3.0",
+    "lucide-react": "^1.32.0",
+    "postcss": "^8.5.26",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tailwindcss": "^3.4.19"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.4",
+    "vite": "^8.2.0"
+  }
+}
