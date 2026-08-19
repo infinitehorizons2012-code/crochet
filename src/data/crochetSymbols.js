@@ -21,7 +21,7 @@ export const CROCHET_SYMBOLS = [
     category: 'Cơ Bản',
     svgType: 'dot',
     description: 'Chấm tròn đen tô kín - dùng để nối vòng hoặc trượt dời chân móc.',
-    videoUrl: '',
+    videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787134874/crochet_kids_symbols/sl_st_1787134872268.mp4',
     imageUrl: '',
   },
   {
@@ -65,7 +65,7 @@ export const CROCHET_SYMBOLS = [
     category: 'Cơ Bản',
     svgType: 'tr_shape',
     description: 'Chữ T có 2 gạch ngang ở thân - mũi móc cao dài.',
-    videoUrl: '',
+    videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787134876/crochet_kids_symbols/tr_1787134876009.mp4',
     imageUrl: '',
   },
   {
