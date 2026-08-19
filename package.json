@@ -6,7 +6,7 @@
   "homepage": "https://infinitehorizons2012-code.github.io/crochet/",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node -e \"require('fs').writeFileSync('dist/.nojekyll', '')\"",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "preview": "vite preview"
