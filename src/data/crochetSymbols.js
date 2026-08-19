@@ -32,7 +32,7 @@ export const CROCHET_SYMBOLS = [
     category: 'Cơ Bản',
     svgType: 'plus_cross',
     description: 'Dấu cộng (+) hoặc dấu nhân (X) - mũi móc đơn chắc chắn.',
-    videoUrl: '',
+    videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787131720/crochet_kids_symbols/sc_1787131715819.mp4',
     imageUrl: '',
   },
   {
@@ -43,7 +43,7 @@ export const CROCHET_SYMBOLS = [
     category: 'Cơ Bản',
     svgType: 't_shape',
     description: 'Chữ T đơn giản - mũi móc có độ cao trung bình.',
-    videoUrl: '',
+    videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787131726/crochet_kids_symbols/hdc_1787131721722.mp4',
     imageUrl: '',
   },
   {
