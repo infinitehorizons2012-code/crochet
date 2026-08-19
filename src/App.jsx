@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Level1Lessons from './components/Level1Lessons';
+import Level1Projects from './components/Level1Projects';
 import SymbolQuiz from './components/SymbolQuiz';
-import ProjectCatalog from './components/ProjectCatalog';
 import YarnMixer from './components/YarnMixer';
 import AchievementBadges from './components/AchievementBadges';
 import Footer from './components/Footer';
@@ -130,7 +130,7 @@ export default function App() {
           )}
 
           {activeTab === 'projects' && (
-            <ProjectCatalog
+            <Level1Projects
               onAddStars={handleAddStars}
               onUnlockBadge={handleUnlockBadge}
             />
