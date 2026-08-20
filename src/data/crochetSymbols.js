@@ -321,5 +321,16 @@ export const CROCHET_SYMBOLS = [
     description: 'Kỹ thuật móc mũi đơn (X) hoặc mũi tăng (V) vào vòng tròn ma thuật để tăng định hình thú bông.',
     videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787193097/crochet_kids_symbols_level2/x_or_v_mr.mp4',
     imageUrl: '',
+  },
+  {
+    id: 'step_up_mr',
+    abbr: 'Lên Hàng',
+    nameEn: 'Stepping Up Rounds in MR',
+    nameVi: 'Cách Lên Hàng Vòng Tròn Ma Thuật',
+    category: 'Level 2 Cơ Bản',
+    svgType: 'step_up_mr_shape',
+    description: 'Kỹ thuật móc mũi bính lên hàng và kết vòng mượt mà để chuyển sang hàng tiếp theo khi móc sản phẩm.',
+    videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787193576/crochet_kids_symbols_level2/step_up_mr.mp4',
+    imageUrl: '',
   }
 ];

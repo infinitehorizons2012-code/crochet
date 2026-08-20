@@ -12,7 +12,8 @@ import CrochetMotionPlayer from './CrochetMotionPlayer';
 // 3. Cách Đổi Màu Vòng Tròn Ma Thuật (color_mr) -> snapsave...6a86620fc2e.mp4 & change color 2.mp4
 // 4. Cách Nối 2 Vòng Tròn Ma Thuật (connect_2mr) -> join 1.mp4 & join 2.mp4
 // 5. Mũi X hay V (x_or_v_mr) -> snapsave...6a8662637f7f3.mp4
-const LEVEL2_SYMBOL_IDS = ['mr', 'join_mr', 'color_mr', 'connect_2mr', 'x_or_v_mr'];
+// 6. Cách Lên Hàng (step_up_mr) -> snapsave...6a8667023e48a.mp4
+const LEVEL2_SYMBOL_IDS = ['mr', 'join_mr', 'color_mr', 'connect_2mr', 'x_or_v_mr', 'step_up_mr'];
 
 export default function Level2Lessons({ onAddStars, onUnlockBadge }) {
   const level2Symbols = LEVEL2_SYMBOL_IDS.map((id) => CROCHET_SYMBOLS.find((s) => s.id === id)).filter(Boolean);
@@ -68,10 +69,10 @@ export default function Level2Lessons({ onAddStars, onUnlockBadge }) {
             Lớp Học Nâng Cao Level 2
           </div>
           <h2 className="text-3xl sm:text-4xl font-black">
-            Level 2: Vòng Tròn Ma Thuật & Đổi Màu / Nối Vòng 🌀
+            Level 2: Vòng Tròn Ma Thuật & Kỹ Thuật Móc 🌀
           </h2>
           <p className="text-sm sm:text-base font-bold text-pink-50 max-w-xl">
-            Bé hãy xem video bài học chi tiết về Vòng Tròn Ma Thuật (MR), kỹ thuật kết vòng, đổi màu len và ghép nối 2 vòng tròn để sẵn sàng móc các mẫu amigurumi dễ thương nhé!
+            Bé hãy xem video bài học chi tiết về Vòng Tròn Ma Thuật (MR), kỹ thuật kết vòng, đổi màu len, ghép nối 2 vòng tròn và cách lên hàng mượt mà nhé!
           </p>
         </div>
 
@@ -90,8 +91,8 @@ export default function Level2Lessons({ onAddStars, onUnlockBadge }) {
         </div>
       </div>
 
-      {/* 5 Level 2 Selection Tabs */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+      {/* 6 Level 2 Selection Tabs */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
         {level2Symbols.map((item) => {
           const isSelected = item.id === selectedId;
           const isDone = completedStitches.includes(item.id);

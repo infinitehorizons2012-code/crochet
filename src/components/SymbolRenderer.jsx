@@ -248,6 +248,15 @@ export default function SymbolRenderer({ type, className = "w-20 h-20", strokeCo
           </g>
         );
 
+      case 'step_up_mr_shape': // Stepping Up Rounds in MR
+        return (
+          <g>
+            <circle cx="50" cy="54" r="26" stroke="#8B5CF6" strokeWidth="6" fill="none" strokeDasharray="8 4" />
+            <path d="M 50 54 L 50 18" stroke="#3B82F6" strokeWidth="6" strokeLinecap="round" />
+            <polygon points="50,10 60,24 40,24" fill="#3B82F6" />
+          </g>
+        );
+
       default:
         return <circle cx="50" cy="50" r="20" fill={strokeColor} />;
     }
