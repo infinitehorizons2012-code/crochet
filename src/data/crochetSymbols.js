@@ -451,12 +451,17 @@ export const CROCHET_SYMBOLS = [
   {
     id: 'sheet_step_up',
     abbr: 'Lên Hàng',
-    nameEn: 'Turning Chain & Stepping Up Rows',
+    nameEn: 'Turning Chain & Stepping Up Rows (3 Ways)',
     nameVi: 'Cách Lên Hàng Tấm Vải',
     category: 'Level 2 Tấm Vải',
     svgType: 'sheet_step_up_shape',
-    description: 'Mẹo móc mũi bính xoay chiều lên hàng thẳng tắp không bị lồi lõm 2 bên mép vải.',
+    description: 'Mẹo móc mũi bính xoay chiều lên hàng thẳng tắp không bị lồi lõm 2 bên mép vải với 3 phương pháp thực hành.',
     videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787212939/crochet_kids_symbols_level2_sheet/sheet_step_up.mp4',
+    videoUrls: [
+      'https://res.cloudinary.com/zopjocdi/video/upload/v1787212939/crochet_kids_symbols_level2_sheet/sheet_step_up.mp4',
+      'https://res.cloudinary.com/zopjocdi/video/upload/v1787227527/crochet_kids_symbols_level2_sheet/sheet_step_up_video2.mp4',
+      'https://res.cloudinary.com/zopjocdi/video/upload/v1787227548/crochet_kids_symbols_level2_sheet/sheet_step_up_video3.mp4'
+    ],
     imageUrl: '',
   },
   {

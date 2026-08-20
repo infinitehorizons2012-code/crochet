@@ -63,6 +63,11 @@ export default function Level2SheetLessons({ onAddStars, onUnlockBadge }) {
     if (symbolId === 'sheet_change_color') {
       return idx === 0 ? '🎬 Video 1: Đổi Màu Chuẩn' : '🎬 Video 2: Mẹo Đổi Màu Mới';
     }
+    if (symbolId === 'sheet_step_up') {
+      if (idx === 0) return '🎬 Video 1: Lên Hàng Chuẩn';
+      if (idx === 1) return '🎬 Video 2: Lên Hàng Mũi Đơn';
+      return '🎬 Video 3: Mẹo Lên Hàng Thẳng Tắp';
+    }
     return `🎬 Video ${idx + 1}`;
   };
 
