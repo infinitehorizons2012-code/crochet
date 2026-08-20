@@ -170,8 +170,8 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                   >
                     <Film className="w-4 h-4 text-purple-500 shrink-0" />
                     <div>
-                      <span className="block font-black text-sm">Vòng Tròn Ma Thuật & Cách Kết 🌀</span>
-                      <span className="block text-[10px] text-slate-500">Magic Ring & Joining MR</span>
+                      <span className="block font-black text-sm">Video Bài Học Level 2 🎬</span>
+                      <span className="block text-[10px] text-slate-500">MR, Kết Vòng, Đổi Màu, Nối 2 MR</span>
                     </div>
                   </button>
                 </div>

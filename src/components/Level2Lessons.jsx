@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
-import { CheckCircle2, Film, Sparkles, Layers } from 'lucide-react';
+import { CheckCircle2, Film, Sparkles, Layers, Video } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { soundFx } from '../utils/sound';
 import { CROCHET_SYMBOLS } from '../data/crochetSymbols';
 import SymbolRenderer from './SymbolRenderer';
 import CrochetMotionPlayer from './CrochetMotionPlayer';
 
-// Level 2 core stitches requested by user: mr (Vòng Tròn Ma Thuật), join_mr (Cách Kết Vòng Tròn Ma Thuật)
-const LEVEL2_SYMBOL_IDS = ['mr', 'join_mr'];
+// Level 2 core items:
+// 1. Vòng Tròn Ma Thuật (mr) -> Magic ring.mp4
+// 2. Cách Kết Vòng Tròn Ma Thuật (join_mr) -> change color 3.mp4
+// 3. Cách Đổi Màu Vòng Tròn Ma Thuật (color_mr) -> change color 2.mp4
+// 4. Cách Nối 2 Vòng Tròn Ma Thuật (connect_2mr) -> join 1.mp4 & join 2.mp4
+const LEVEL2_SYMBOL_IDS = ['mr', 'join_mr', 'color_mr', 'connect_2mr'];
 
 export default function Level2Lessons({ onAddStars, onUnlockBadge }) {
   const level2Symbols = LEVEL2_SYMBOL_IDS.map((id) => CROCHET_SYMBOLS.find((s) => s.id === id)).filter(Boolean);
   const [selectedId, setSelectedId] = useState('mr');
   const [isFlipped, setIsFlipped] = useState(false);
+  const [activeVideoIndex, setActiveVideoIndex] = useState(0);
   const [completedStitches, setCompletedStitches] = useState([]);
 
   const currentSymbol = level2Symbols.find((s) => s.id === selectedId) || level2Symbols[0];
@@ -20,6 +25,7 @@ export default function Level2Lessons({ onAddStars, onUnlockBadge }) {
   const handleSelectStitch = (id) => {
     soundFx.playPop();
     setIsFlipped(false);
+    setActiveVideoIndex(0);
     setSelectedId(id);
   };
 
@@ -40,6 +46,16 @@ export default function Level2Lessons({ onAddStars, onUnlockBadge }) {
     }
   };
 
+  // Determine active video URL for items with multiple videos (e.g. connect_2mr)
+  const currentVideoUrl = currentSymbol.videoUrls && currentSymbol.videoUrls[activeVideoIndex]
+    ? currentSymbol.videoUrls[activeVideoIndex]
+    : currentSymbol.videoUrl;
+
+  const displaySymbol = {
+    ...currentSymbol,
+    videoUrl: currentVideoUrl
+  };
+
   return (
     <div className="space-y-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
       
@@ -51,10 +67,10 @@ export default function Level2Lessons({ onAddStars, onUnlockBadge }) {
             Lớp Học Nâng Cao Level 2
           </div>
           <h2 className="text-3xl sm:text-4xl font-black">
-            Level 2: Vòng Tròn Ma Thuật & Cách Kết 🌀
+            Level 2: Vòng Tròn Ma Thuật & Đổi Màu / Nối Vòng 🌀
           </h2>
           <p className="text-sm sm:text-base font-bold text-pink-50 max-w-xl">
-            Bé hãy xem video bài học thao tác mượt mà và thực hành làm Vòng Tròn Ma Thuật (Magic Ring) cùng kỹ thuật kết vòng khép kín để chuẩn bị móc thú bông amigurumi xinh xắn nhé!
+            Bé hãy xem video bài học chi tiết về Vòng Tròn Ma Thuật (MR), kỹ thuật kết vòng, đổi màu len và ghép nối 2 vòng tròn để sẵn sàng móc các mẫu amigurumi dễ thương nhé!
           </p>
         </div>
 
@@ -73,8 +89,8 @@ export default function Level2Lessons({ onAddStars, onUnlockBadge }) {
         </div>
       </div>
 
-      {/* 2 Stitch Selection Tabs */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+      {/* 4 Level 2 Selection Tabs */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {level2Symbols.map((item) => {
           const isSelected = item.id === selectedId;
           const isDone = completedStitches.includes(item.id);
@@ -83,7 +99,7 @@ export default function Level2Lessons({ onAddStars, onUnlockBadge }) {
             <button
               key={item.id}
               onClick={() => handleSelectStitch(item.id)}
-              className={`p-5 rounded-3xl border-4 font-black transition-all duration-200 flex items-center gap-4 relative ${
+              className={`p-4 rounded-3xl border-4 font-black transition-all duration-200 flex items-center gap-3 relative ${
                 isSelected
                   ? 'bg-gradient-to-tr from-purple-500 to-pink-500 text-white border-white shadow-xl scale-105'
                   : isDone
@@ -92,18 +108,18 @@ export default function Level2Lessons({ onAddStars, onUnlockBadge }) {
               }`}
             >
               {isDone && (
-                <span className="absolute top-2.5 right-2.5 bg-emerald-500 text-white rounded-full p-1 shadow-md">
-                  <CheckCircle2 className="w-4 h-4" />
+                <span className="absolute top-2 right-2 bg-emerald-500 text-white rounded-full p-1 shadow-md">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
                 </span>
               )}
 
-              <div className="w-14 h-14 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center p-2 shadow-inner shrink-0">
-                <SymbolRenderer type={item.svgType} className="w-10 h-10" strokeColor="#0F172A" />
+              <div className="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center p-2 shadow-inner shrink-0">
+                <SymbolRenderer type={item.svgType} className="w-8 h-8" strokeColor="#0F172A" />
               </div>
 
-              <div className="text-left">
-                <span className="block text-base font-black">{item.nameVi}</span>
-                <span className="block text-xs font-bold opacity-80">{item.nameEn} ({item.abbr})</span>
+              <div className="text-left overflow-hidden">
+                <span className="block text-sm font-black truncate">{item.nameVi}</span>
+                <span className="block text-[11px] font-bold opacity-80 truncate">{item.nameEn}</span>
               </div>
             </button>
           );
@@ -115,7 +131,7 @@ export default function Level2Lessons({ onAddStars, onUnlockBadge }) {
         
         {/* Left Column: Cloudinary Video & Motion Simulator */}
         <div className="bg-white rounded-3xl border-4 border-purple-200 p-6 shadow-xl space-y-4">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between flex-wrap gap-2">
             <span className="text-xs font-black bg-purple-100 text-purple-700 px-3.5 py-1 rounded-full border border-purple-200 flex items-center gap-1.5">
               <Film className="w-4 h-4" /> Video Bài Học ({currentSymbol.nameVi})
             </span>
@@ -124,7 +140,32 @@ export default function Level2Lessons({ onAddStars, onUnlockBadge }) {
             </span>
           </div>
 
-          <CrochetMotionPlayer symbol={currentSymbol} showSymbolOverlay={true} className="w-full" />
+          {/* Multi-part Video Switcher (if videoUrls array is present) */}
+          {currentSymbol.videoUrls && currentSymbol.videoUrls.length > 1 && (
+            <div className="flex items-center gap-2 bg-purple-50 p-2 rounded-2xl border border-purple-200">
+              <span className="text-xs font-black text-purple-800 px-2 flex items-center gap-1">
+                <Video className="w-4 h-4" /> Chọn Video:
+              </span>
+              {currentSymbol.videoUrls.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => {
+                    soundFx.playPop();
+                    setActiveVideoIndex(idx);
+                  }}
+                  className={`flex-1 py-1.5 px-3 rounded-xl font-extrabold text-xs transition-all ${
+                    activeVideoIndex === idx
+                      ? 'bg-purple-600 text-white shadow-md'
+                      : 'bg-white text-purple-700 hover:bg-purple-100 border border-purple-200'
+                  }`}
+                >
+                  🎬 Video {idx + 1}
+                </button>
+              ))}
+            </div>
+          )}
+
+          <CrochetMotionPlayer symbol={displaySymbol} showSymbolOverlay={true} className="w-full" />
 
           <div className="bg-purple-50/70 p-4 rounded-2xl border border-purple-200 text-slate-700 space-y-1">
             <h4 className="font-extrabold text-sm text-purple-900 flex items-center gap-2">

@@ -220,6 +220,25 @@ export default function SymbolRenderer({ type, className = "w-20 h-20", strokeCo
           </g>
         );
 
+      case 'color_mr_shape': // Changing Color in MR
+        return (
+          <g>
+            <path d="M 50 22 A 28 28 0 0 1 50 78" stroke="#EC4899" strokeWidth="6" fill="none" strokeLinecap="round" />
+            <path d="M 50 78 A 28 28 0 0 1 50 22" stroke="#8B5CF6" strokeWidth="6" strokeDasharray="6 4" fill="none" strokeLinecap="round" />
+            <circle cx="50" cy="22" r="6" fill="#EC4899" />
+            <circle cx="50" cy="78" r="6" fill="#8B5CF6" />
+          </g>
+        );
+
+      case 'connect_2mr_shape': // Connecting 2 MRs
+        return (
+          <g>
+            <circle cx="36" cy="50" r="24" stroke="#8B5CF6" strokeWidth="6" fill="none" />
+            <circle cx="64" cy="50" r="24" stroke="#EC4899" strokeWidth="6" fill="none" />
+            <path d="M 50 32 L 50 68" stroke="#F59E0B" strokeWidth="6" strokeLinecap="round" />
+          </g>
+        );
+
       default:
         return <circle cx="50" cy="50" r="20" fill={strokeColor} />;
     }
