@@ -297,7 +297,8 @@ export const CROCHET_SYMBOLS = [
     videoUrls: [
       'https://res.cloudinary.com/zopjocdi/video/upload/v1787190283/crochet_kids_symbols_level2/join_mr_change_color_3.mp4',
       'https://res.cloudinary.com/zopjocdi/video/upload/v1787192227/crochet_kids_symbols_level2/color_mr_way1.mp4',
-      'https://res.cloudinary.com/zopjocdi/video/upload/v1787190284/crochet_kids_symbols_level2/color_mr_change_color_2.mp4'
+      'https://res.cloudinary.com/zopjocdi/video/upload/v1787190284/crochet_kids_symbols_level2/color_mr_change_color_2.mp4',
+      'https://res.cloudinary.com/zopjocdi/video/upload/v1787198718/crochet_kids_symbols_level2/color_mr_way4.mp4'
     ],
     imageUrl: '',
   },
