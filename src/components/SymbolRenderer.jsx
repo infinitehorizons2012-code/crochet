@@ -239,6 +239,15 @@ export default function SymbolRenderer({ type, className = "w-20 h-20", strokeCo
           </g>
         );
 
+      case 'x_or_v_shape': // Stitch X or V in MR
+        return (
+          <g>
+            <circle cx="50" cy="50" r="32" stroke="#10B981" strokeWidth="5" fill="none" strokeDasharray="6 3" />
+            <path d="M 30 40 L 44 60 M 44 40 L 30 60" stroke="#EC4899" strokeWidth="6" strokeLinecap="round" />
+            <path d="M 56 40 L 64 60 L 72 40" stroke="#8B5CF6" strokeWidth="6" strokeLinecap="round" fill="none" />
+          </g>
+        );
+
       default:
         return <circle cx="50" cy="50" r="20" fill={strokeColor} />;
     }

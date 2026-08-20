@@ -310,5 +310,16 @@ export const CROCHET_SYMBOLS = [
       'https://res.cloudinary.com/zopjocdi/video/upload/v1787190288/crochet_kids_symbols_level2/connect_2mr_join_2.mp4'
     ],
     imageUrl: '',
+  },
+  {
+    id: 'x_or_v_mr',
+    abbr: 'X / V',
+    nameEn: 'Stitch X or V in MR',
+    nameVi: 'Mũi X hay V (Mũi Đơn / Mũi Tăng)',
+    category: 'Level 2 Cơ Bản',
+    svgType: 'x_or_v_shape',
+    description: 'Kỹ thuật móc mũi đơn (X) hoặc mũi tăng (V) vào vòng tròn ma thuật để tăng định hình thú bông.',
+    videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787193097/crochet_kids_symbols_level2/x_or_v_mr.mp4',
+    imageUrl: '',
   }
 ];
