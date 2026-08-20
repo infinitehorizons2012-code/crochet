@@ -257,6 +257,15 @@ export default function SymbolRenderer({ type, className = "w-20 h-20", strokeCo
           </g>
         );
 
+      case 'join_3d_shape': // Joining 2 3D Pieces
+        return (
+          <g>
+            <ellipse cx="36" cy="50" rx="22" ry="26" stroke="#F59E0B" strokeWidth="5" fill="none" />
+            <ellipse cx="64" cy="50" rx="22" ry="26" stroke="#EC4899" strokeWidth="5" fill="none" />
+            <path d="M 50 28 L 50 72" stroke="#8B5CF6" strokeWidth="6" strokeDasharray="4 3" strokeLinecap="round" />
+          </g>
+        );
+
       default:
         return <circle cx="50" cy="50" r="20" fill={strokeColor} />;
     }

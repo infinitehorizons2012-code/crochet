@@ -332,5 +332,16 @@ export const CROCHET_SYMBOLS = [
     description: 'Kỹ thuật móc mũi bính lên hàng và kết vòng mượt mà để chuyển sang hàng tiếp theo khi móc sản phẩm.',
     videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787193576/crochet_kids_symbols_level2/step_up_mr.mp4',
     imageUrl: '',
+  },
+  {
+    id: 'join_3d_pieces',
+    abbr: 'Nối 3D',
+    nameEn: 'Joining 2 3D Pieces',
+    nameVi: 'Cách Nối 2 Chi Tiết 3D',
+    category: 'Level 2 Cơ Bản',
+    svgType: 'join_3d_shape',
+    description: 'Kỹ thuật móc khâu ghép nối 2 chi tiết khối thú 3D (tay, chân, đầu, thân) khép kín và chắc chắn.',
+    videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787194809/crochet_kids_symbols_level2/join_3d_pieces.mp4',
+    imageUrl: '',
   }
 ];

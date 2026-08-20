@@ -13,7 +13,8 @@ import CrochetMotionPlayer from './CrochetMotionPlayer';
 // 4. Cách Nối 2 Vòng Tròn Ma Thuật (connect_2mr) -> join 1.mp4 & join 2.mp4
 // 5. Mũi X hay V (x_or_v_mr) -> snapsave...6a8662637f7f3.mp4
 // 6. Cách Lên Hàng (step_up_mr) -> snapsave...6a8667023e48a.mp4
-const LEVEL2_SYMBOL_IDS = ['mr', 'join_mr', 'color_mr', 'connect_2mr', 'x_or_v_mr', 'step_up_mr'];
+// 7. Cách Nối 2 Chi Tiết 3D (join_3d_pieces) -> join 4.mp4
+const LEVEL2_SYMBOL_IDS = ['mr', 'join_mr', 'color_mr', 'connect_2mr', 'x_or_v_mr', 'step_up_mr', 'join_3d_pieces'];
 
 export default function Level2Lessons({ onAddStars, onUnlockBadge }) {
   const level2Symbols = LEVEL2_SYMBOL_IDS.map((id) => CROCHET_SYMBOLS.find((s) => s.id === id)).filter(Boolean);
@@ -91,8 +92,8 @@ export default function Level2Lessons({ onAddStars, onUnlockBadge }) {
         </div>
       </div>
 
-      {/* 6 Level 2 Selection Tabs */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+      {/* 7 Level 2 Selection Tabs */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-3">
         {level2Symbols.map((item) => {
           const isSelected = item.id === selectedId;
           const isDone = completedStitches.includes(item.id);
