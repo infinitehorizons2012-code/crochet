@@ -45,10 +45,10 @@ export default function Level2Projects2D({ onAddStars, onUnlockBadge }) {
         <div className="space-y-2 text-center md:text-left">
           <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-black">
             <Palette className="w-4 h-4 text-pink-200" />
-            Thư Viện {projects.length} Mẫu Móc 2D Level 2
+            Thư Viện {projects.length} Mẫu Móc 2D Level 3
           </div>
           <h2 className="text-3xl sm:text-4xl font-black">
-            Dự Án Project 2D Level 2 🎨
+            Dự Án Project 2D Level 3 🎨
           </h2>
           <p className="text-sm sm:text-base font-bold text-purple-100 max-w-xl">
             Bé hãy chọn một mẫu móc 2D xinh xắn bên dưới (như cỏ 4 lá may mắn, hoa sặc sỡ...), xem video hướng dẫn thao tác mượt mà và tự tay tạo nên tác phẩm nhé!
@@ -56,7 +56,7 @@ export default function Level2Projects2D({ onAddStars, onUnlockBadge }) {
         </div>
 
         <div className="bg-white/90 backdrop-blur-md text-slate-800 p-4 rounded-2xl border-2 border-white shadow-md text-center min-w-[180px]">
-          <span className="block text-xs font-black text-slate-500">Tiến Trình Dự Án 2D</span>
+          <span className="block text-xs font-black text-slate-500">Tiến Trình Dự Án Level 3</span>
           <span className="text-2xl font-black text-purple-600">
             {completedProjects.length} / {projects.length} Mẫu
           </span>

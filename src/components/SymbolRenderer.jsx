@@ -275,6 +275,69 @@ export default function SymbolRenderer({ type, className = "w-20 h-20", strokeCo
           </g>
         );
 
+      case 'sheet_start_shape': // Starting Chain & Knot
+        return (
+          <g>
+            <circle cx="50" cy="50" r="24" stroke="#F59E0B" strokeWidth="6" fill="none" strokeDasharray="12 4" />
+            <path d="M 30 50 L 70 50" stroke="#EC4899" strokeWidth="6" strokeLinecap="round" />
+            <circle cx="50" cy="50" r="8" fill="#8B5CF6" />
+          </g>
+        );
+
+      case 'sheet_long_chain_shape': // Long Foundation Chain
+        return (
+          <g>
+            <ellipse cx="25" cy="50" rx="12" ry="7" stroke="#3B82F6" strokeWidth="5" fill="none" />
+            <ellipse cx="50" cy="50" rx="12" ry="7" stroke="#EC4899" strokeWidth="5" fill="none" />
+            <ellipse cx="75" cy="50" rx="12" ry="7" stroke="#10B981" strokeWidth="5" fill="none" />
+          </g>
+        );
+
+      case 'sheet_adjust_chain_shape': // Adjusting Excess or Deficit Chain
+        return (
+          <g>
+            <ellipse cx="35" cy="40" rx="10" ry="6" stroke="#3B82F6" strokeWidth="4" fill="none" />
+            <ellipse cx="65" cy="40" rx="10" ry="6" stroke="#3B82F6" strokeWidth="4" fill="none" />
+            <path d="M 30 65 L 42 65 M 36 59 L 36 71" stroke="#10B981" strokeWidth="4" strokeLinecap="round" />
+            <path d="M 58 65 L 70 65" stroke="#EF4444" strokeWidth="4" strokeLinecap="round" />
+          </g>
+        );
+
+      case 'sheet_finish_shape': // Finishing & Invisible Fasten Off
+        return (
+          <g>
+            <rect x="20" y="25" width="60" height="50" rx="8" stroke="#10B981" strokeWidth="5" fill="none" strokeDasharray="6 3" />
+            <path d="M 38 50 L 48 60 L 66 40" stroke="#10B981" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+          </g>
+        );
+
+      case 'sheet_step_up_shape': // Turning Chain & Stepping Up Rows
+        return (
+          <g>
+            <path d="M 20 70 L 80 70 M 20 45 L 80 45 M 20 20 L 60 20" stroke="#8B5CF6" strokeWidth="5" strokeLinecap="round" strokeDasharray="8 4" />
+            <path d="M 75 45 Q 85 45 85 32 Q 85 20 70 20" stroke="#EC4899" strokeWidth="5" fill="none" strokeLinecap="round" />
+            <polygon points="65,20 75,14 75,26" fill="#EC4899" />
+          </g>
+        );
+
+      case 'sheet_add_yarn_shape': // Joining New Yarn Strand
+        return (
+          <g>
+            <path d="M 15 50 Q 35 30 50 50" stroke="#3B82F6" strokeWidth="6" fill="none" strokeLinecap="round" />
+            <path d="M 50 50 Q 65 70 85 50" stroke="#F59E0B" strokeWidth="6" fill="none" strokeLinecap="round" />
+            <circle cx="50" cy="50" r="7" fill="#EC4899" />
+          </g>
+        );
+
+      case 'sheet_change_color_shape': // Changing Color in Flat Rows
+        return (
+          <g>
+            <rect x="20" y="20" width="60" height="28" fill="#EC4899" rx="4" />
+            <rect x="20" y="52" width="60" height="28" fill="#3B82F6" rx="4" />
+            <line x1="20" y1="50" x2="80" y2="50" stroke="#F59E0B" strokeWidth="4" strokeDasharray="6 3" />
+          </g>
+        );
+
       default:
         return <circle cx="50" cy="50" r="20" fill={strokeColor} />;
     }

@@ -6,7 +6,7 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const [dropdown2Open, setDropdown2Open] = useState(false);
+  const [dropdown3Open, setDropdown3Open] = useState(false);
 
   const handleMuteToggle = () => {
     const muted = soundFx.toggleMute();
@@ -20,10 +20,12 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
     setMobileMenuOpen(false);
     setDropdownOpen(false);
     setDropdown2Open(false);
+    setDropdown3Open(false);
   };
 
   const isLevel1Active = activeTab === 'level1_lessons' || activeTab === 'projects' || activeTab === 'level1_quiz';
-  const isLevel2Active = activeTab === 'level2_lessons' || activeTab === 'level2_projects_2d';
+  const isLevel2Active = activeTab === 'level2_sheet_lessons';
+  const isLevel3Active = activeTab === 'level2_lessons' || activeTab === 'level2_projects_2d';
 
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b-4 border-pink-200 shadow-sm">
@@ -61,12 +63,14 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                   soundFx.playPop();
                   setDropdownOpen(!dropdownOpen);
                   setDropdown2Open(false);
+                  setDropdown3Open(false);
                 }}
                 onMouseEnter={() => {
                   setDropdownOpen(true);
                   setDropdown2Open(false);
+                  setDropdown3Open(false);
                 }}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-extrabold text-sm transition-all duration-200 ${
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-extrabold text-xs sm:text-sm transition-all duration-200 ${
                   isLevel1Active
                     ? 'bg-gradient-to-r from-pink-400 to-purple-400 text-white shadow-md scale-105'
                     : 'text-slate-600 hover:text-pink-500 hover:bg-white/60'
@@ -93,8 +97,8 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                   >
                     <Film className="w-4 h-4 text-pink-500 shrink-0" />
                     <div>
-                      <span className="block font-black text-sm">Video Bài Học 🎬</span>
-                      <span className="block text-[10px] text-slate-500">8 Mũi Móc Cơ Bản</span>
+                      <span className="block font-black text-sm">Video Bài Học Level 1 🎬</span>
+                      <span className="block text-[10px] text-slate-500">Video Tổng Hợp + 8 Mũi</span>
                     </div>
                   </button>
 
@@ -108,7 +112,7 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                   >
                     <Heart className="w-4 h-4 text-purple-500 shrink-0" />
                     <div>
-                      <span className="block font-black text-sm">Dự Án / Project 🐙</span>
+                      <span className="block font-black text-sm">Dự Án / Project Level 1 🐙</span>
                       <span className="block text-[10px] text-slate-500">14 Mẫu Móc Level 1</span>
                     </div>
                   </button>
@@ -131,33 +135,84 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
               )}
             </div>
 
-            {/* LEVEL 2 DROPDOWN MENU */}
+            {/* LEVEL 2 DROPDOWN MENU (Tấm Vải) */}
             <div className="relative group">
               <button
                 onClick={() => {
                   soundFx.playPop();
                   setDropdown2Open(!dropdown2Open);
                   setDropdownOpen(false);
+                  setDropdown3Open(false);
                 }}
                 onMouseEnter={() => {
                   setDropdown2Open(true);
                   setDropdownOpen(false);
+                  setDropdown3Open(false);
                 }}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-extrabold text-sm transition-all duration-200 ${
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-extrabold text-xs sm:text-sm transition-all duration-200 ${
                   isLevel2Active
+                    ? 'bg-gradient-to-r from-teal-500 to-emerald-500 text-white shadow-md scale-105'
+                    : 'text-slate-600 hover:text-teal-600 hover:bg-white/60'
+                }`}
+              >
+                <Sparkles className={`w-4 h-4 ${isLevel2Active ? 'text-white' : 'text-teal-500'}`} />
+                Level 2 🧵
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${dropdown2Open ? 'rotate-180' : ''}`} />
+              </button>
+
+              {/* Dropdown Menu Content Level 2 Tấm Vải */}
+              {dropdown2Open && (
+                <div 
+                  onMouseLeave={() => setDropdown2Open(false)}
+                  className="absolute top-full left-0 mt-2 w-64 bg-white rounded-2xl border-4 border-teal-200 shadow-2xl p-2 z-50 animate-popIn space-y-1"
+                >
+                  <button
+                    onClick={() => handleNavClick('level2_sheet_lessons')}
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-xs transition-all ${
+                      activeTab === 'level2_sheet_lessons'
+                        ? 'bg-teal-100 text-teal-800 font-black'
+                        : 'text-slate-700 hover:bg-teal-50'
+                    }`}
+                  >
+                    <Film className="w-4 h-4 text-teal-600 shrink-0" />
+                    <div>
+                      <span className="block font-black text-sm">Level 2: Tấm Vải 🧵</span>
+                      <span className="block text-[10px] text-slate-500">7 Kỹ Thuật Móc Phẳng & Bính</span>
+                    </div>
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* LEVEL 3 DROPDOWN MENU (Vòng Tròn Ma Thuật & Projects) */}
+            <div className="relative group">
+              <button
+                onClick={() => {
+                  soundFx.playPop();
+                  setDropdown3Open(!dropdown3Open);
+                  setDropdownOpen(false);
+                  setDropdown2Open(false);
+                }}
+                onMouseEnter={() => {
+                  setDropdown3Open(true);
+                  setDropdownOpen(false);
+                  setDropdown2Open(false);
+                }}
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-extrabold text-xs sm:text-sm transition-all duration-200 ${
+                  isLevel3Active
                     ? 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-md scale-105'
                     : 'text-slate-600 hover:text-purple-600 hover:bg-white/60'
                 }`}
               >
-                <Sparkles className={`w-4 h-4 ${isLevel2Active ? 'text-white' : 'text-purple-500'}`} />
-                Level 2 🚀
-                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${dropdown2Open ? 'rotate-180' : ''}`} />
+                <Sparkles className={`w-4 h-4 ${isLevel3Active ? 'text-white' : 'text-purple-500'}`} />
+                Level 3 🚀
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${dropdown3Open ? 'rotate-180' : ''}`} />
               </button>
 
-              {/* Dropdown Menu Content Level 2 */}
-              {dropdown2Open && (
+              {/* Dropdown Menu Content Level 3 */}
+              {dropdown3Open && (
                 <div 
-                  onMouseLeave={() => setDropdown2Open(false)}
+                  onMouseLeave={() => setDropdown3Open(false)}
                   className="absolute top-full left-0 mt-2 w-64 bg-white rounded-2xl border-4 border-purple-200 shadow-2xl p-2 z-50 animate-popIn space-y-1"
                 >
                   <button
@@ -170,8 +225,8 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                   >
                     <Film className="w-4 h-4 text-purple-500 shrink-0" />
                     <div>
-                      <span className="block font-black text-sm">Video Bài Học Level 2 🎬</span>
-                      <span className="block text-[10px] text-slate-500">7 Kỹ Thuật Ma Thuật</span>
+                      <span className="block font-black text-sm">Level 3: Vòng Tròn Ma Thuật 🌀</span>
+                      <span className="block text-[10px] text-slate-500">7 Bài Học Vòng Tròn Ma Thuật</span>
                     </div>
                   </button>
 
@@ -185,8 +240,8 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                   >
                     <Palette className="w-4 h-4 text-pink-500 shrink-0" />
                     <div>
-                      <span className="block font-black text-sm">Project 2D / Dự Án 2D 🎨</span>
-                      <span className="block text-[10px] text-slate-500">6 Mẫu Móc 2D Level 2</span>
+                      <span className="block font-black text-sm">Project 2D Level 3 🎨</span>
+                      <span className="block text-[10px] text-slate-500">6 Mẫu Móc 2D Level 3</span>
                     </div>
                   </button>
                 </div>
@@ -241,7 +296,7 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                 }`}
               >
                 <Film className="w-4 h-4" />
-                Video Bài Học 🎬 (8 Mũi)
+                Video Bài Học Level 1 🎬 (9 Bài)
               </button>
               <button
                 onClick={() => handleNavClick('projects')}
@@ -252,7 +307,7 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                 }`}
               >
                 <Heart className="w-4 h-4" />
-                Dự Án / Project 🐙 (14 Mẫu)
+                Dự Án / Project Level 1 🐙 (14 Mẫu)
               </button>
               <button
                 onClick={() => handleNavClick('level1_quiz')}
@@ -268,9 +323,27 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
             </div>
 
             {/* Mobile Level 2 Group */}
+            <div className="bg-white p-3 rounded-2xl border-2 border-teal-200 space-y-2">
+              <span className="text-xs font-black text-teal-700 block uppercase px-2">
+                🧵 LEVEL 2:
+              </span>
+              <button
+                onClick={() => handleNavClick('level2_sheet_lessons')}
+                className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold text-sm transition-all ${
+                  activeTab === 'level2_sheet_lessons'
+                    ? 'bg-teal-600 text-white shadow-md'
+                    : 'bg-slate-50 text-slate-700'
+                }`}
+              >
+                <Film className="w-4 h-4" />
+                Level 2: Tấm Vải 🧵 (7 Bài)
+              </button>
+            </div>
+
+            {/* Mobile Level 3 Group */}
             <div className="bg-white p-3 rounded-2xl border-2 border-purple-200 space-y-2">
               <span className="text-xs font-black text-purple-700 block uppercase px-2">
-                🚀 LEVEL 2:
+                🚀 LEVEL 3:
               </span>
               <button
                 onClick={() => handleNavClick('level2_lessons')}
@@ -281,7 +354,7 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                 }`}
               >
                 <Film className="w-4 h-4" />
-                Video Bài Học Level 2 🌀 (7 Bài)
+                Vòng Tròn Ma Thuật Level 3 🌀 (7 Bài)
               </button>
               <button
                 onClick={() => handleNavClick('level2_projects_2d')}
@@ -292,7 +365,7 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                 }`}
               >
                 <Palette className="w-4 h-4" />
-                Project 2D / Dự Án 2D 🎨 (6 Mẫu)
+                Project 2D Level 3 🎨 (6 Mẫu)
               </button>
             </div>
           </div>
