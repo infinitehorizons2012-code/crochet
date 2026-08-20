@@ -443,5 +443,50 @@ export const CROCHET_SYMBOLS = [
     description: 'Kỹ thuật đổi màu len giữa các hàng tấm vải sắc nét và tạo đường chọc màu phẳng đẹp.',
     videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787210868/crochet_kids_symbols_level2_sheet/sheet_change_color.mp4',
     imageUrl: '',
+  },
+  {
+    id: 'granny_basic',
+    abbr: 'Granny Cơ Bản',
+    nameEn: 'Basic Granny Square (2 Ways)',
+    nameVi: 'Granny Square Cơ Bản',
+    category: 'Level 4 Granny Square',
+    svgType: 'granny_basic_shape',
+    description: 'Kỹ thuật móc ô vuông Granny cơ bản với 2 phương pháp khởi đầu: Móc từ Vòng Tròn Ma Thuật (MR) hoặc Móc từ Chuỗi Bính (Chain).',
+    videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787213988/crochet_kids_symbols_level4_granny/granny_basic_mr.mp4',
+    videoUrls: [
+      'https://res.cloudinary.com/zopjocdi/video/upload/v1787213988/crochet_kids_symbols_level4_granny/granny_basic_mr.mp4',
+      'https://res.cloudinary.com/zopjocdi/video/upload/v1787214002/crochet_kids_symbols_level4_granny/granny_basic_chain.mp4'
+    ],
+    imageUrl: '',
+  },
+  {
+    id: 'granny_corner',
+    abbr: 'Bo Góc',
+    nameEn: 'Crisp Corner Technique',
+    nameVi: 'Cách Bo Góc Ô Vuông Granny',
+    category: 'Level 4 Granny Square',
+    svgType: 'granny_corner_shape',
+    description: 'Kỹ thuật bo góc vuông chuẩn nét, giúp ô vuông Granny không bị xoắn góc hay mo tròn mép vải.',
+    videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787214013/crochet_kids_symbols_level4_granny/granny_corner.mp4',
+    imageUrl: '',
+  },
+  {
+    id: 'granny_join',
+    abbr: 'Nối Granny',
+    nameEn: 'Joining 2 Granny Squares (6 Ways)',
+    nameVi: 'Các Cách Nối 2 Ô Vuông Granny',
+    category: 'Level 4 Granny Square',
+    svgType: 'granny_join_shape',
+    description: 'Tổng hợp 6 phương pháp ghép nối 2 ô vuông Granny với các kiểu đường khâu trang trí, giấu chỉ và phẳng đẹp.',
+    videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787214028/crochet_kids_symbols_level4_granny/granny_join_way1.mp4',
+    videoUrls: [
+      'https://res.cloudinary.com/zopjocdi/video/upload/v1787214028/crochet_kids_symbols_level4_granny/granny_join_way1.mp4',
+      'https://res.cloudinary.com/zopjocdi/video/upload/v1787214035/crochet_kids_symbols_level4_granny/granny_join_way2.mp4',
+      'https://res.cloudinary.com/zopjocdi/video/upload/v1787214056/crochet_kids_symbols_level4_granny/granny_join_way3.mp4',
+      'https://res.cloudinary.com/zopjocdi/video/upload/v1787214078/crochet_kids_symbols_level4_granny/granny_join_way4.mp4',
+      'https://res.cloudinary.com/zopjocdi/video/upload/v1787214093/crochet_kids_symbols_level4_granny/granny_join_way5.mp4',
+      'https://res.cloudinary.com/zopjocdi/video/upload/v1787214096/crochet_kids_symbols_level4_granny/granny_join_way6.mp4'
+    ],
+    imageUrl: '',
   }
 ];

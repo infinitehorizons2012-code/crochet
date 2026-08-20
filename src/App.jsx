@@ -6,6 +6,7 @@ import Level1Quiz from './components/Level1Quiz';
 import Level2Lessons from './components/Level2Lessons';
 import Level2SheetLessons from './components/Level2SheetLessons';
 import Level2Projects2D from './components/Level2Projects2D';
+import Level4GrannyLessons from './components/Level4GrannyLessons';
 import SymbolQuiz from './components/SymbolQuiz';
 import YarnMixer from './components/YarnMixer';
 import AchievementBadges from './components/AchievementBadges';
@@ -163,6 +164,13 @@ export default function App() {
 
           {activeTab === 'level2_projects_2d' && (
             <Level2Projects2D
+              onAddStars={handleAddStars}
+              onUnlockBadge={handleUnlockBadge}
+            />
+          )}
+
+          {activeTab === 'level4_granny_lessons' && (
+            <Level4GrannyLessons
               onAddStars={handleAddStars}
               onUnlockBadge={handleUnlockBadge}
             />

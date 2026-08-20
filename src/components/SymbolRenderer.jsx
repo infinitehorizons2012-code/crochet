@@ -338,6 +338,33 @@ export default function SymbolRenderer({ type, className = "w-20 h-20", strokeCo
           </g>
         );
 
+      case 'granny_basic_shape': // Basic Granny Square
+        return (
+          <g>
+            <rect x="18" y="18" width="64" height="64" rx="8" stroke="#8B5CF6" strokeWidth="5" fill="none" />
+            <rect x="34" y="34" width="32" height="32" rx="4" stroke="#EC4899" strokeWidth="4" fill="none" />
+            <circle cx="50" cy="50" r="5" fill="#F59E0B" />
+          </g>
+        );
+
+      case 'granny_corner_shape': // Crisp Corner Technique
+        return (
+          <g>
+            <path d="M 25 75 L 25 25 L 75 25" stroke="#10B981" strokeWidth="7" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            <circle cx="25" cy="25" r="8" fill="#F59E0B" />
+            <polygon points="65,40 75,55 55,55" fill="#EC4899" />
+          </g>
+        );
+
+      case 'granny_join_shape': // Joining 2 Granny Squares
+        return (
+          <g>
+            <rect x="12" y="25" width="34" height="50" rx="6" stroke="#3B82F6" strokeWidth="4" fill="none" />
+            <rect x="54" y="25" width="34" height="50" rx="6" stroke="#EC4899" strokeWidth="4" fill="none" />
+            <path d="M 46 25 L 46 75" stroke="#F59E0B" strokeWidth="5" strokeDasharray="4 3" strokeLinecap="round" />
+          </g>
+        );
+
       default:
         return <circle cx="50" cy="50" r="20" fill={strokeColor} />;
     }
