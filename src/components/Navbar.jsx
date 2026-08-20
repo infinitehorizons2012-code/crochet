@@ -23,7 +23,7 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
   };
 
   const isLevel1Active = activeTab === 'level1_lessons' || activeTab === 'projects' || activeTab === 'level1_quiz';
-  const isLevel2Active = activeTab === 'level2_lessons' || activeTab === 'level2_projects' || activeTab === 'level2_quiz';
+  const isLevel2Active = activeTab === 'level2_lessons' || activeTab === 'level2_projects_2d';
 
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b-4 border-pink-200 shadow-sm">
@@ -171,7 +171,22 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                     <Film className="w-4 h-4 text-purple-500 shrink-0" />
                     <div>
                       <span className="block font-black text-sm">Video Bài Học Level 2 🎬</span>
-                      <span className="block text-[10px] text-slate-500">MR, Kết Vòng, Đổi Màu, Nối 2 MR</span>
+                      <span className="block text-[10px] text-slate-500">7 Kỹ Thuật Ma Thuật</span>
+                    </div>
+                  </button>
+
+                  <button
+                    onClick={() => handleNavClick('level2_projects_2d')}
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-xs transition-all ${
+                      activeTab === 'level2_projects_2d'
+                        ? 'bg-pink-100 text-pink-700 font-black'
+                        : 'text-slate-700 hover:bg-purple-50'
+                    }`}
+                  >
+                    <Palette className="w-4 h-4 text-pink-500 shrink-0" />
+                    <div>
+                      <span className="block font-black text-sm">Project 2D / Dự Án 2D 🎨</span>
+                      <span className="block text-[10px] text-slate-500">6 Mẫu Móc 2D Level 2</span>
                     </div>
                   </button>
                 </div>
@@ -226,7 +241,7 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                 }`}
               >
                 <Film className="w-4 h-4" />
-                Video Bài Học 🎬 (5 Mũi)
+                Video Bài Học 🎬 (8 Mũi)
               </button>
               <button
                 onClick={() => handleNavClick('projects')}
@@ -237,7 +252,7 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                 }`}
               >
                 <Heart className="w-4 h-4" />
-                Dự Án / Project 🐙
+                Dự Án / Project 🐙 (14 Mẫu)
               </button>
               <button
                 onClick={() => handleNavClick('level1_quiz')}
@@ -266,7 +281,18 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                 }`}
               >
                 <Film className="w-4 h-4" />
-                Vòng Tròn Ma Thuật & Cách Kết 🌀
+                Video Bài Học Level 2 🌀 (7 Bài)
+              </button>
+              <button
+                onClick={() => handleNavClick('level2_projects_2d')}
+                className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold text-sm transition-all ${
+                  activeTab === 'level2_projects_2d'
+                    ? 'bg-pink-500 text-white shadow-md'
+                    : 'bg-slate-50 text-slate-700'
+                }`}
+              >
+                <Palette className="w-4 h-4" />
+                Project 2D / Dự Án 2D 🎨 (6 Mẫu)
               </button>
             </div>
           </div>

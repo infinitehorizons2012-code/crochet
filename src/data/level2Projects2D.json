@@ -1,0 +1,68 @@
+[
+  {
+    "id": "proj_l2_2d_1",
+    "title": "Dự Án 2D #1: Cỏ 4 Lá May Mắn 🍀",
+    "emoji": "🍀",
+    "difficulty": "Level 2 2D ⭐⭐",
+    "time": "15-20 phút",
+    "stars": 40,
+    "color": "from-purple-500 to-pink-500",
+    "videoUrl": "https://res.cloudinary.com/zopjocdi/video/upload/v1787195267/crochet_kids_projects_level2_2d/level2_2d_project_1.mp4",
+    "fileName": "FSave.com_Reels_Huong-dan-moc-co-4-la-may-man-cho-may-co_Media_1506571827892028_001_1080p.mp4"
+  },
+  {
+    "id": "proj_l2_2d_2",
+    "title": "Dự Án 2D #2: Móc Hoa Xinh Xắn 🌸",
+    "emoji": "🌸",
+    "difficulty": "Level 2 2D ⭐⭐",
+    "time": "15-20 phút",
+    "stars": 40,
+    "color": "from-indigo-500 to-purple-500",
+    "videoUrl": "https://res.cloudinary.com/zopjocdi/video/upload/v1787195276/crochet_kids_projects_level2_2d/level2_2d_project_2.mp4",
+    "fileName": "FSave.com_Reels_Nang-nao-khong-biet-moc-hoa-thi-boi-het-_Media_1780991406258514_001_720p.mp4"
+  },
+  {
+    "id": "proj_l2_2d_3",
+    "title": "Dự Án 2D #3: Mẫu Móc 2D Táo Đỏ 🍎",
+    "emoji": "🍎",
+    "difficulty": "Level 2 2D ⭐⭐",
+    "time": "15-20 phút",
+    "stars": 40,
+    "color": "from-purple-500 to-pink-500",
+    "videoUrl": "https://res.cloudinary.com/zopjocdi/video/upload/v1787195282/crochet_kids_projects_level2_2d/level2_2d_project_3.mp4",
+    "fileName": "snapsave.vn_facebook_6a866b08cbfc9.mp4"
+  },
+  {
+    "id": "proj_l2_2d_4",
+    "title": "Dự Án 2D #4: Mẫu Móc 2D Trái Tim 💖",
+    "emoji": "💖",
+    "difficulty": "Level 2 2D ⭐⭐",
+    "time": "15-20 phút",
+    "stars": 40,
+    "color": "from-indigo-500 to-purple-500",
+    "videoUrl": "https://res.cloudinary.com/zopjocdi/video/upload/v1787195289/crochet_kids_projects_level2_2d/level2_2d_project_4.mp4",
+    "fileName": "snapsave.vn_facebook_6a866ba065dfa.mp4"
+  },
+  {
+    "id": "proj_l2_2d_5",
+    "title": "Dự Án 2D #5: Mẫu Móc 2D Ngôi Sao ⭐",
+    "emoji": "⭐",
+    "difficulty": "Level 2 2D ⭐⭐",
+    "time": "15-20 phút",
+    "stars": 40,
+    "color": "from-purple-500 to-pink-500",
+    "videoUrl": "https://res.cloudinary.com/zopjocdi/video/upload/v1787195296/crochet_kids_projects_level2_2d/level2_2d_project_5.mp4",
+    "fileName": "snapsave.vn_facebook_6a866bc2586fc.mp4"
+  },
+  {
+    "id": "proj_l2_2d_6",
+    "title": "Dự Án 2D #6: Mẫu Móc 2D Búp Măng 🍓",
+    "emoji": "🍓",
+    "difficulty": "Level 2 2D ⭐⭐",
+    "time": "15-20 phút",
+    "stars": 40,
+    "color": "from-indigo-500 to-purple-500",
+    "videoUrl": "https://res.cloudinary.com/zopjocdi/video/upload/v1787195301/crochet_kids_projects_level2_2d/level2_2d_project_6.mp4",
+    "fileName": "snapsave.vn_facebook_6a866c3d4c9cf.mp4"
+  }
+]
