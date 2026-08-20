@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Play, Pause, RotateCcw, Film, Sparkles, Image as ImageIcon } from 'lucide-react';
 import SymbolRenderer from './SymbolRenderer';
+import { getVideoPosterUrl } from '../utils/media';
 import { getCloudinaryMediaUrl } from '../utils/cloudinary';
 
 export default function CrochetMotionPlayer({ symbol, showSymbolOverlay = true, className = "" }) {
@@ -56,6 +57,7 @@ export default function CrochetMotionPlayer({ symbol, showSymbolOverlay = true, 
           <video
             ref={videoRef}
             src={videoUrl}
+            poster={getVideoPosterUrl(videoUrl)}
             autoPlay
             loop
             muted

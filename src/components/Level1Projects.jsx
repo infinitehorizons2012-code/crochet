@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Heart, Sparkles, Star, CheckCircle, Clock, Scissors, Layers, Award, ChevronRight, X, Play, Pause, RotateCcw } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { soundFx } from '../utils/sound';
+import { getVideoPosterUrl } from '../utils/media';
 import level1ProjectsData from '../data/level1Projects.json';
 
 export default function Level1Projects({ onAddStars, onUnlockBadge }) {
@@ -83,14 +84,22 @@ export default function Level1Projects({ onAddStars, onUnlockBadge }) {
               <div>
                 {/* Project Video Thumbnail Container */}
                 <div className="relative w-full h-48 bg-slate-900 overflow-hidden flex items-center justify-center">
+                  <img
+                    src={getVideoPosterUrl(project.videoUrl)}
+                    alt={project.title}
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    onError={(e) => { e.target.style.display = 'none'; }}
+                  />
                   <video
-                    src={project.videoUrl}
+                    src={project.videoUrl ? `${project.videoUrl}#t=0.5` : undefined}
+                    poster={getVideoPosterUrl(project.videoUrl)}
+                    autoPlay
                     muted
                     loop
                     playsInline
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-90"
+                    className="relative z-10 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-90"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/20" />
+                  <div className="absolute inset-0 z-10 bg-gradient-to-t from-slate-950/80 via-transparent to-black/20" />
 
                   {/* Play Overlay Badge */}
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -189,6 +198,7 @@ export default function Level1Projects({ onAddStars, onUnlockBadge }) {
               <div className="relative w-full max-h-[460px] bg-black rounded-2xl overflow-hidden border-4 border-slate-800 shadow-inner flex items-center justify-center">
                 <video
                   src={activeProjectModal.videoUrl}
+                  poster={getVideoPosterUrl(activeProjectModal.videoUrl)}
                   controls
                   autoPlay
                   className="w-full max-h-[420px] object-contain rounded-xl"
