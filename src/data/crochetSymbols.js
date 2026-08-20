@@ -397,6 +397,17 @@ export const CROCHET_SYMBOLS = [
     imageUrl: '',
   },
   {
+    id: 'sheet_row2',
+    abbr: 'Hàng 2',
+    nameEn: 'Clean Bottom Edge & Row 2',
+    nameVi: 'Móc Hàng 2 (Mép Vải Đẹp Phẳng)',
+    category: 'Level 2 Tấm Vải',
+    svgType: 'sheet_row2_shape',
+    description: 'Mẹo móc đâm kim qua gờ bính để viền mép đáy tấm vải thẳng phẳng và giấu chỉ đẹp mượt.',
+    videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787220274/crochet_kids_symbols_level2_sheet/sheet_row2.mp4',
+    imageUrl: '',
+  },
+  {
     id: 'sheet_adjust_chain',
     abbr: 'Thừa & Thiếu',
     nameEn: 'Adjusting Excess or Deficit Chain',
@@ -409,6 +420,17 @@ export const CROCHET_SYMBOLS = [
       'https://res.cloudinary.com/zopjocdi/video/upload/v1787210822/crochet_kids_symbols_level2_sheet/sheet_adjust_chain_reduce.mp4',
       'https://res.cloudinary.com/zopjocdi/video/upload/v1787210834/crochet_kids_symbols_level2_sheet/sheet_adjust_chain_add.mp4'
     ],
+    imageUrl: '',
+  },
+  {
+    id: 'sheet_bottom_loop',
+    abbr: 'Vòng Đáy',
+    nameEn: 'Crocheting Into Bottom Loop',
+    nameVi: 'Móc Vòng Đáy (Chân Bính Đáy)',
+    category: 'Level 2 Tấm Vải',
+    svgType: 'sheet_bottom_loop_shape',
+    description: 'Kỹ thuật đâm kim qua chân bính vòng đáy để tạo đường gờ vững chắc cho sản phẩm tấm vải.',
+    videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787220277/crochet_kids_symbols_level2_sheet/sheet_bottom_loop.mp4',
     imageUrl: '',
   },
   {

@@ -338,6 +338,24 @@ export default function SymbolRenderer({ type, className = "w-20 h-20", strokeCo
           </g>
         );
 
+      case 'sheet_row2_shape': // Clean Bottom Edge & Row 2
+        return (
+          <g>
+            <path d="M 15 35 L 85 35 M 15 65 L 85 65" stroke="#10B981" strokeWidth="5" strokeLinecap="round" />
+            <path d="M 25 35 Q 35 50 45 35 Q 55 50 65 35 Q 75 50 85 35" stroke="#EC4899" strokeWidth="4" fill="none" />
+            <circle cx="50" cy="65" r="5" fill="#F59E0B" />
+          </g>
+        );
+
+      case 'sheet_bottom_loop_shape': // Crocheting Into Bottom Loop
+        return (
+          <g>
+            <path d="M 20 50 Q 50 20 80 50" stroke="#3B82F6" strokeWidth="6" fill="none" strokeLinecap="round" />
+            <path d="M 20 65 L 80 65" stroke="#8B5CF6" strokeWidth="5" strokeDasharray="6 3" strokeLinecap="round" />
+            <circle cx="50" cy="65" r="6" fill="#10B981" />
+          </g>
+        );
+
       case 'granny_basic_shape': // Basic Granny Square
         return (
           <g>

@@ -6,11 +6,13 @@ import { CROCHET_SYMBOLS } from '../data/crochetSymbols';
 import SymbolRenderer from './SymbolRenderer';
 import CrochetMotionPlayer from './CrochetMotionPlayer';
 
-// 7 Level 2 Tấm Vải items: sheet_start, sheet_long_chain, sheet_adjust_chain, sheet_finish, sheet_step_up, sheet_add_yarn, sheet_change_color
+// 9 Level 2 Tấm Vải items: sheet_start, sheet_long_chain, sheet_row2, sheet_adjust_chain, sheet_bottom_loop, sheet_finish, sheet_step_up, sheet_add_yarn, sheet_change_color
 const LEVEL2_SHEET_SYMBOL_IDS = [
   'sheet_start',
   'sheet_long_chain',
+  'sheet_row2',
   'sheet_adjust_chain',
+  'sheet_bottom_loop',
   'sheet_finish',
   'sheet_step_up',
   'sheet_add_yarn',
@@ -104,8 +106,8 @@ export default function Level2SheetLessons({ onAddStars, onUnlockBadge }) {
         </div>
       </div>
 
-      {/* 7 Level 2 Selection Tabs */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-3">
+      {/* 9 Level 2 Selection Tabs */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-9 gap-3">
         {sheetSymbols.map((item) => {
           const isSelected = item.id === selectedId;
           const isDone = completedStitches.includes(item.id);
