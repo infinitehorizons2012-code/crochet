@@ -401,6 +401,45 @@ export default function SymbolRenderer({ type, className = "w-20 h-20", strokeCo
           </g>
         );
 
+      case 'stitch_bobble_shape': // Bobble Stitch
+        return (
+          <g>
+            <circle cx="35" cy="50" r="14" fill="#EC4899" opacity="0.8" />
+            <circle cx="65" cy="50" r="14" fill="#EC4899" opacity="0.8" />
+            <circle cx="50" cy="40" r="16" fill="#F43F5E" />
+            <path d="M 50 78 L 50 56" stroke="#8B5CF6" strokeWidth="6" strokeLinecap="round" />
+          </g>
+        );
+
+      case 'stitch_loop_shape': // Loop Stitch
+        return (
+          <g>
+            <path d="M 30 75 L 30 45 Q 30 15 50 15 Q 70 15 70 45 L 70 75" stroke="#3B82F6" strokeWidth="6" fill="none" strokeLinecap="round" />
+            <line x1="15" y1="75" x2="85" y2="75" stroke="#10B981" strokeWidth="6" strokeLinecap="round" />
+          </g>
+        );
+
+      case 'stitch_popcorn_shape': // Popcorn Stitch
+        return (
+          <g>
+            <circle cx="32" cy="38" r="10" fill="#F59E0B" />
+            <circle cx="50" cy="28" r="12" fill="#FBBF24" />
+            <circle cx="68" cy="38" r="10" fill="#F59E0B" />
+            <path d="M 30 78 L 45 42 M 70 78 L 55 42" stroke="#8B5CF6" strokeWidth="5" strokeLinecap="round" />
+          </g>
+        );
+
+      case 'stitch_puff_shape': // Puff Stitch
+        return (
+          <g>
+            <ellipse cx="50" cy="42" rx="22" ry="16" fill="#A855F7" />
+            <line x1="38" y1="28" x2="38" y2="56" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" />
+            <line x1="50" y1="26" x2="50" y2="58" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" />
+            <line x1="62" y1="28" x2="62" y2="56" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" />
+            <line x1="50" y1="58" x2="50" y2="78" stroke="#8B5CF6" strokeWidth="6" strokeLinecap="round" />
+          </g>
+        );
+
       default:
         return <circle cx="50" cy="50" r="20" fill={strokeColor} />;
     }

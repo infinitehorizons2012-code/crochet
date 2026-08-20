@@ -8,6 +8,7 @@ import Level2SheetLessons from './components/Level2SheetLessons';
 import Level2Projects2D from './components/Level2Projects2D';
 import Level4GrannyLessons from './components/Level4GrannyLessons';
 import Level5BagLessons from './components/Level5BagLessons';
+import Level6StitchLessons from './components/Level6StitchLessons';
 import SymbolQuiz from './components/SymbolQuiz';
 import YarnMixer from './components/YarnMixer';
 import AchievementBadges from './components/AchievementBadges';
@@ -179,6 +180,13 @@ export default function App() {
 
           {activeTab === 'level5_bag_lessons' && (
             <Level5BagLessons
+              onAddStars={handleAddStars}
+              onUnlockBadge={handleUnlockBadge}
+            />
+          )}
+
+          {activeTab === 'level6_stitch_lessons' && (
+            <Level6StitchLessons
               onAddStars={handleAddStars}
               onUnlockBadge={handleUnlockBadge}
             />
