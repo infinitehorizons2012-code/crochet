@@ -266,6 +266,15 @@ export default function SymbolRenderer({ type, className = "w-20 h-20", strokeCo
           </g>
         );
 
+      case 'summary_video_shape': // Level 1 Summary Video
+        return (
+          <g>
+            <rect x="15" y="20" width="70" height="60" rx="16" fill="#EC4899" />
+            <polygon points="42,35 68,50 42,65" fill="#FFFFFF" />
+            <circle cx="80" cy="24" r="6" fill="#F59E0B" />
+          </g>
+        );
+
       default:
         return <circle cx="50" cy="50" r="20" fill={strokeColor} />;
     }

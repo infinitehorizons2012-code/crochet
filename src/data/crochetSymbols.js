@@ -2,6 +2,17 @@
 
 export const CROCHET_SYMBOLS = [
   {
+    id: 'level1_summary',
+    abbr: 'Tổng Hợp',
+    nameEn: 'Level 1 Chart Overview Video',
+    nameVi: 'Video Tổng Hợp Móc Chart Level 1',
+    category: 'Cơ Bản',
+    svgType: 'summary_video_shape',
+    description: 'Video tổng hợp hướng dẫn đọc chart hình và kết hợp các mũi móc cơ bản Level 1 vô cùng trực quan cho bé.',
+    videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787198981/crochet_kids_symbols_level1/level1_summary_video.mp4',
+    imageUrl: '',
+  },
+  {
     id: 'ch',
     abbr: 'ch',
     nameEn: 'Chain',
