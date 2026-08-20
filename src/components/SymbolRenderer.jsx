@@ -365,6 +365,15 @@ export default function SymbolRenderer({ type, className = "w-20 h-20", strokeCo
           </g>
         );
 
+      case 'inc_dec_mr_shape': // Stacking Increases & Decreases in MR
+        return (
+          <g>
+            <circle cx="50" cy="50" r="26" stroke="#8B5CF6" strokeWidth="5" fill="none" strokeDasharray="6 3" />
+            <path d="M 36 60 L 50 35 L 64 60" stroke="#10B981" strokeWidth="5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M 36 40 L 50 65 L 64 40" stroke="#EF4444" strokeWidth="5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          </g>
+        );
+
       default:
         return <circle cx="50" cy="50" r="20" fill={strokeColor} />;
     }

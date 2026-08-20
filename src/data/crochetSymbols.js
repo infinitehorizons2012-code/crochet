@@ -364,6 +364,17 @@ export const CROCHET_SYMBOLS = [
     imageUrl: '',
   },
   {
+    id: 'inc_dec_mr',
+    abbr: 'Tăng Giảm',
+    nameEn: 'Stacking Increases & Decreases in MR',
+    nameVi: 'Kỹ Thuật Tăng Giảm Mũi Trong Vòng Tròn Ma Thuật',
+    category: 'Level 3 Cơ Bản',
+    svgType: 'inc_dec_mr_shape',
+    description: 'Trực quan sinh động kỹ thuật xếp chồng các mũi tăng (V) và giảm (A) trong vòng tròn ma thuật để định hình khối 3D tròn mịn đẹp.',
+    videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787219542/crochet_kids_symbols_level2/inc_dec_mr.mp4',
+    imageUrl: '',
+  },
+  {
     id: 'sheet_start',
     abbr: 'Bắt Đầu',
     nameEn: 'Starting Chain & Knot',

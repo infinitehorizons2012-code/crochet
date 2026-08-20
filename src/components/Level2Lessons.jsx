@@ -14,7 +14,8 @@ import CrochetMotionPlayer from './CrochetMotionPlayer';
 // 5. Mũi X hay V (x_or_v_mr) -> snapsave...6a8662637f7f3.mp4
 // 6. Cách Lên Hàng (step_up_mr) -> snapsave...6a8667023e48a.mp4
 // 7. Cách Nối 2 Chi Tiết 3D (join_3d_pieces) -> join 4.mp4
-const LEVEL2_SYMBOL_IDS = ['mr', 'join_mr', 'color_mr', 'connect_2mr', 'x_or_v_mr', 'step_up_mr', 'join_3d_pieces'];
+// 8. Kỹ Thuật Tăng Giảm (inc_dec_mr) -> Here-s-a-visual-showing-how-stacking-you...mp4
+const LEVEL2_SYMBOL_IDS = ['mr', 'join_mr', 'color_mr', 'connect_2mr', 'x_or_v_mr', 'step_up_mr', 'join_3d_pieces', 'inc_dec_mr'];
 
 export default function Level2Lessons({ onAddStars, onUnlockBadge }) {
   const level2Symbols = LEVEL2_SYMBOL_IDS.map((id) => CROCHET_SYMBOLS.find((s) => s.id === id)).filter(Boolean);
