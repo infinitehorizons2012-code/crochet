@@ -264,6 +264,10 @@ export const CROCHET_SYMBOLS = [
     svgType: 'mr_shape',
     description: 'Vòng tròn khép kín điều chỉnh linh hoạt - gốc tạo hình thú bông.',
     videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787146283/crochet_kids_symbols_level2/mr_magic_ring.mp4',
+    videoUrls: [
+      'https://res.cloudinary.com/zopjocdi/video/upload/v1787146283/crochet_kids_symbols_level2/mr_magic_ring.mp4',
+      'https://res.cloudinary.com/zopjocdi/video/upload/v1787192643/crochet_kids_symbols_level2/mr_way2.mp4'
+    ],
     imageUrl: '',
   },
   {
