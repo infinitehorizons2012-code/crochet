@@ -292,6 +292,7 @@ export const CROCHET_SYMBOLS = [
     videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787195726/crochet_kids_symbols_level2/join_mr_tip_1.mp4',
     videoUrls: [
       'https://res.cloudinary.com/zopjocdi/video/upload/v1787195726/crochet_kids_symbols_level2/join_mr_tip_1.mp4',
+      'https://res.cloudinary.com/zopjocdi/video/upload/v1787213467/crochet_kids_symbols_level2/join_mr_tip_4_joining_rounds.mp4',
       'https://res.cloudinary.com/zopjocdi/video/upload/v1787195732/crochet_kids_symbols_level2/join_mr_tip_2.mp4',
       'https://res.cloudinary.com/zopjocdi/video/upload/v1787209859/crochet_kids_symbols_level2/join_mr_tip_3.mp4'
     ],
@@ -418,7 +419,7 @@ export const CROCHET_SYMBOLS = [
     category: 'Level 2 Tấm Vải',
     svgType: 'sheet_step_up_shape',
     description: 'Mẹo móc mũi bính xoay chiều lên hàng thẳng tắp không bị lồi lõm 2 bên mép vải.',
-    videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787210854/crochet_kids_symbols_level2_sheet/sheet_step_up.mp4',
+    videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787212939/crochet_kids_symbols_level2_sheet/sheet_step_up.mp4',
     imageUrl: '',
   },
   {
