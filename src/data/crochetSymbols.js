@@ -285,7 +285,11 @@ export const CROCHET_SYMBOLS = [
     category: 'Level 2 Cơ Bản',
     svgType: 'color_mr_shape',
     description: 'Kỹ thuật đổi sang màu len mới trên vòng tròn ma thuật sắc nét và gọn gàng.',
-    videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787190284/crochet_kids_symbols_level2/color_mr_change_color_2.mp4',
+    videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787192227/crochet_kids_symbols_level2/color_mr_way1.mp4',
+    videoUrls: [
+      'https://res.cloudinary.com/zopjocdi/video/upload/v1787192227/crochet_kids_symbols_level2/color_mr_way1.mp4',
+      'https://res.cloudinary.com/zopjocdi/video/upload/v1787190284/crochet_kids_symbols_level2/color_mr_change_color_2.mp4'
+    ],
     imageUrl: '',
   },
   {
