@@ -7,15 +7,15 @@ import SymbolRenderer from './SymbolRenderer';
 import CrochetMotionPlayer from './CrochetMotionPlayer';
 
 // Level 2 core items:
-// 1. Vòng Tròn Ma Thuật (mr) -> Magic ring.mp4 & snapsave...6a8663d1a47e0.mp4
-// 2. Cách Kết Vòng Tròn Ma Thuật (join_mr) -> change color 3.mp4
-// 3. Cách Đổi Màu Vòng Tròn Ma Thuật (color_mr) -> snapsave...6a86620fc2e.mp4 & change color 2.mp4
-// 4. Cách Nối 2 Vòng Tròn Ma Thuật (connect_2mr) -> join 1.mp4 & join 2.mp4
-// 5. Mũi X hay V (x_or_v_mr) -> snapsave...6a8662637f7f3.mp4
-// 6. Cách Lên Hàng (step_up_mr) -> snapsave...6a8667023e48a.mp4
-// 7. Cách Nối 2 Chi Tiết 3D (join_3d_pieces) -> join 4.mp4
-// 8. Kỹ Thuật Tăng Giảm (inc_dec_mr) -> Here-s-a-visual-showing-how-stacking-you...mp4
-const LEVEL2_SYMBOL_IDS = ['mr', 'join_mr', 'color_mr', 'connect_2mr', 'x_or_v_mr', 'step_up_mr', 'join_3d_pieces', 'inc_dec_mr'];
+// 1. Vòng Tròn Ma Thuật (mr)
+// 2. Cách Lên Hàng Vòng Tròn Ma Thuật (step_up_mr)
+// 3. Cách Kết Vòng Tròn Ma Thuật (join_mr)
+// 4. Cách Đổi Màu Vòng Tròn Ma Thuật (color_mr)
+// 5. Cách Nối 2 Vòng Tròn Ma Thuật (connect_2mr)
+// 6. Mũi X hay V (x_or_v_mr)
+// 7. Cách Nối 2 Chi Tiết 3D (join_3d_pieces)
+// 8. Kỹ Thuật Tăng Giảm (inc_dec_mr)
+const LEVEL2_SYMBOL_IDS = ['mr', 'step_up_mr', 'join_mr', 'color_mr', 'connect_2mr', 'x_or_v_mr', 'join_3d_pieces', 'inc_dec_mr'];
 
 export default function Level2Lessons({ onAddStars, onUnlockBadge }) {
   const level2Symbols = LEVEL2_SYMBOL_IDS.map((id) => CROCHET_SYMBOLS.find((s) => s.id === id)).filter(Boolean);
