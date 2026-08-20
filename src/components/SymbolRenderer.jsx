@@ -392,6 +392,15 @@ export default function SymbolRenderer({ type, className = "w-20 h-20", strokeCo
           </g>
         );
 
+      case 'level5_bag_shape': // Crochet Bag & Pouch Technique
+        return (
+          <g>
+            <path d="M 24 38 L 76 38 L 82 78 Q 82 85 74 85 L 26 85 Q 18 85 18 78 Z" stroke="#8B5CF6" strokeWidth="5" fill="none" strokeLinejoin="round" />
+            <path d="M 34 38 Q 34 16 50 16 Q 66 16 66 38" stroke="#F59E0B" strokeWidth="5" fill="none" strokeLinecap="round" />
+            <circle cx="50" cy="58" r="6" fill="#EC4899" />
+          </g>
+        );
+
       default:
         return <circle cx="50" cy="50" r="20" fill={strokeColor} />;
     }

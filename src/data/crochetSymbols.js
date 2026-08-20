@@ -529,5 +529,16 @@ export const CROCHET_SYMBOLS = [
       'https://res.cloudinary.com/zopjocdi/video/upload/v1787214096/crochet_kids_symbols_level4_granny/granny_join_way6.mp4'
     ],
     imageUrl: '',
+  },
+  {
+    id: 'level5_bag',
+    abbr: 'Móc Túi',
+    nameEn: 'Crochet Bag & Pouch Technique',
+    nameVi: 'Lý Thuyết Móc Túi Xách & Phụ Kiện',
+    category: 'Level 5 Móc Túi',
+    svgType: 'level5_bag_shape',
+    description: 'Hướng dẫn lý thuyết kỹ thuật móc túi xách handmade: từ khởi tạo đáy túi, lên thân túi đứng dáng đến hoàn thiện quai túi thời trang.',
+    videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787221095/crochet_kids_symbols_level5_bag/level5_bag_theory.mp4',
+    imageUrl: '',
   }
 ];

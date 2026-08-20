@@ -8,6 +8,7 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
   const [dropdown2Open, setDropdown2Open] = useState(false);
   const [dropdown3Open, setDropdown3Open] = useState(false);
   const [dropdown4Open, setDropdown4Open] = useState(false);
+  const [dropdown5Open, setDropdown5Open] = useState(false);
 
   const handleMuteToggle = () => {
     const muted = soundFx.toggleMute();
@@ -23,12 +24,14 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
     setDropdown2Open(false);
     setDropdown3Open(false);
     setDropdown4Open(false);
+    setDropdown5Open(false);
   };
 
   const isLevel1Active = activeTab === 'level1_lessons' || activeTab === 'projects' || activeTab === 'level1_quiz';
   const isLevel2Active = activeTab === 'level2_sheet_lessons';
   const isLevel3Active = activeTab === 'level2_lessons' || activeTab === 'level2_projects_2d';
   const isLevel4Active = activeTab === 'level4_granny_lessons';
+  const isLevel5Active = activeTab === 'level5_bag_lessons';
 
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b-4 border-pink-200 shadow-sm">
@@ -262,12 +265,14 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                   setDropdownOpen(false);
                   setDropdown2Open(false);
                   setDropdown3Open(false);
+                  setDropdown5Open(false);
                 }}
                 onMouseEnter={() => {
                   setDropdown4Open(true);
                   setDropdownOpen(false);
                   setDropdown2Open(false);
                   setDropdown3Open(false);
+                  setDropdown5Open(false);
                 }}
                 className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-extrabold text-xs sm:text-sm transition-all duration-200 ${
                   isLevel4Active
@@ -298,6 +303,59 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                     <div>
                       <span className="block font-black text-sm">Level 4: Granny Square 🔳</span>
                       <span className="block text-[10px] text-slate-500">Kỹ Thuật Ô Vuông & 6 Cách Nối</span>
+                    </div>
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* LEVEL 5 DROPDOWN MENU (Móc Túi) */}
+            <div className="relative group">
+              <button
+                onClick={() => {
+                  soundFx.playPop();
+                  setDropdown5Open(!dropdown5Open);
+                  setDropdownOpen(false);
+                  setDropdown2Open(false);
+                  setDropdown3Open(false);
+                  setDropdown4Open(false);
+                }}
+                onMouseEnter={() => {
+                  setDropdown5Open(true);
+                  setDropdownOpen(false);
+                  setDropdown2Open(false);
+                  setDropdown3Open(false);
+                  setDropdown4Open(false);
+                }}
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-extrabold text-xs sm:text-sm transition-all duration-200 ${
+                  isLevel5Active
+                    ? 'bg-gradient-to-r from-amber-500 via-purple-600 to-pink-500 text-white shadow-md scale-105'
+                    : 'text-slate-600 hover:text-amber-600 hover:bg-white/60'
+                }`}
+              >
+                <Sparkles className={`w-4 h-4 ${isLevel5Active ? 'text-white' : 'text-amber-500'}`} />
+                Level 5 👜
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${dropdown5Open ? 'rotate-180' : ''}`} />
+              </button>
+
+              {/* Dropdown Menu Content Level 5 Móc Túi */}
+              {dropdown5Open && (
+                <div 
+                  onMouseLeave={() => setDropdown5Open(false)}
+                  className="absolute top-full left-0 mt-2 w-64 bg-white rounded-2xl border-4 border-amber-200 shadow-2xl p-2 z-50 animate-popIn space-y-1"
+                >
+                  <button
+                    onClick={() => handleNavClick('level5_bag_lessons')}
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-xs transition-all ${
+                      activeTab === 'level5_bag_lessons'
+                        ? 'bg-amber-100 text-amber-900 font-black'
+                        : 'text-slate-700 hover:bg-amber-50'
+                    }`}
+                  >
+                    <Film className="w-4 h-4 text-amber-600 shrink-0" />
+                    <div>
+                      <span className="block font-black text-sm">Level 5: Móc Túi 👜</span>
+                      <span className="block text-[10px] text-slate-500">Lý Thuyết Kỹ Thuật Móc Túi</span>
                     </div>
                   </button>
                 </div>
@@ -440,6 +498,24 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
               >
                 <Film className="w-4 h-4" />
                 Level 4: Granny Square 🔳 (3 Bài)
+              </button>
+            </div>
+
+            {/* Mobile Level 5 Group */}
+            <div className="bg-white p-3 rounded-2xl border-2 border-amber-200 space-y-2">
+              <span className="text-xs font-black text-amber-700 block uppercase px-2">
+                👜 LEVEL 5:
+              </span>
+              <button
+                onClick={() => handleNavClick('level5_bag_lessons')}
+                className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold text-sm transition-all ${
+                  activeTab === 'level5_bag_lessons'
+                    ? 'bg-amber-600 text-white shadow-md'
+                    : 'bg-slate-50 text-slate-700'
+                }`}
+              >
+                <Film className="w-4 h-4" />
+                Level 5: Móc Túi 👜 (Lý Thuyết)
               </button>
             </div>
           </div>
