@@ -46,7 +46,7 @@ export default function Level1Projects({ onAddStars, onUnlockBadge }) {
         <div className="space-y-2 text-center md:text-left">
           <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-black">
             <Heart className="w-4 h-4 text-pink-200 fill-pink-200" />
-            Thư Viện 7 Dự Án Thực Hành Level 1
+            Thư Viện 14 Dự Án Thực Hành Level 1
           </div>
           <h2 className="text-3xl sm:text-4xl font-black">
             Dự Án Móc Len Level 1 🐙

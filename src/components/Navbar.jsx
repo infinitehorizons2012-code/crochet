@@ -109,7 +109,7 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                     <Heart className="w-4 h-4 text-purple-500 shrink-0" />
                     <div>
                       <span className="block font-black text-sm">Dự Án / Project 🐙</span>
-                      <span className="block text-[10px] text-slate-500">7 Mẫu Móc Level 1</span>
+                      <span className="block text-[10px] text-slate-500">14 Mẫu Móc Level 1</span>
                     </div>
                   </button>
 
