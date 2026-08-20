@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle2, Film, Sparkles, ShoppingBag, Video } from 'lucide-react';
+import { CheckCircle2, Film, Sparkles, ShoppingBag, Video, Layers } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { soundFx } from '../utils/sound';
 import { CROCHET_SYMBOLS } from '../data/crochetSymbols';
