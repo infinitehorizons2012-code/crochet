@@ -9,13 +9,14 @@ import CrochetMotionPlayer from './CrochetMotionPlayer';
 // Level 2 core items:
 // 1. Vòng Tròn Ma Thuật (mr)
 // 2. Cách Lên Hàng Vòng Tròn Ma Thuật (step_up_mr)
-// 3. Cách Kết Vòng Tròn Ma Thuật (join_mr)
-// 4. Cách Đổi Màu Vòng Tròn Ma Thuật (color_mr)
-// 5. Cách Nối 2 Vòng Tròn Ma Thuật (connect_2mr)
-// 6. Mũi X hay V (x_or_v_mr)
-// 7. Cách Nối 2 Chi Tiết 3D (join_3d_pieces)
-// 8. Kỹ Thuật Tăng Giảm (inc_dec_mr)
-const LEVEL2_SYMBOL_IDS = ['mr', 'step_up_mr', 'join_mr', 'color_mr', 'connect_2mr', 'x_or_v_mr', 'join_3d_pieces', 'inc_dec_mr'];
+// 3. Mẹo Móc Thẳng Hàng Vòng Tròn Ma Thuật (straight_line_mr)
+// 4. Cách Kết Vòng Tròn Ma Thuật (join_mr)
+// 5. Cách Đổi Màu Vòng Tròn Ma Thuật (color_mr)
+// 6. Cách Nối 2 Vòng Tròn Ma Thuật (connect_2mr)
+// 7. Mũi X hay V (x_or_v_mr)
+// 8. Cách Nối 2 Chi Tiết 3D (join_3d_pieces)
+// 9. Kỹ Thuật Tăng Giảm (inc_dec_mr)
+const LEVEL2_SYMBOL_IDS = ['mr', 'step_up_mr', 'straight_line_mr', 'join_mr', 'color_mr', 'connect_2mr', 'x_or_v_mr', 'join_3d_pieces', 'inc_dec_mr'];
 
 export default function Level2Lessons({ onAddStars, onUnlockBadge }) {
   const level2Symbols = LEVEL2_SYMBOL_IDS.map((id) => CROCHET_SYMBOLS.find((s) => s.id === id)).filter(Boolean);
@@ -48,6 +49,13 @@ export default function Level2Lessons({ onAddStars, onUnlockBadge }) {
         onUnlockBadge('level2_mr_master');
       }
     }
+  };
+
+  const getVideoLabel = (symbolId, idx) => {
+    if (symbolId === 'inc_dec_mr') {
+      return idx === 0 ? '🎬 Video 1: Xếp Chồng V/A' : '🎬 Video 2: Mẹo Tăng Giảm Mới';
+    }
+    return `🎬 Video ${idx + 1}`;
   };
 
   // Determine active video URL for items with multiple videos (e.g. connect_2mr)
@@ -163,7 +171,7 @@ export default function Level2Lessons({ onAddStars, onUnlockBadge }) {
                       : 'bg-white text-purple-700 hover:bg-purple-100 border border-purple-200'
                   }`}
                 >
-                  🎬 Video {idx + 1}
+                  {getVideoLabel(currentSymbol.id, idx)}
                 </button>
               ))}
             </div>

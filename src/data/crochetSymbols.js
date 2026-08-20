@@ -366,12 +366,27 @@ export const CROCHET_SYMBOLS = [
   {
     id: 'inc_dec_mr',
     abbr: 'Tăng Giảm',
-    nameEn: 'Stacking Increases & Decreases in MR',
+    nameEn: 'Stacking Increases & Decreases in MR (2 Ways)',
     nameVi: 'Kỹ Thuật Tăng Giảm Mũi Trong Vòng Tròn Ma Thuật',
     category: 'Level 3 Cơ Bản',
     svgType: 'inc_dec_mr_shape',
     description: 'Trực quan sinh động kỹ thuật xếp chồng các mũi tăng (V) và giảm (A) trong vòng tròn ma thuật để định hình khối 3D tròn mịn đẹp.',
     videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787219542/crochet_kids_symbols_level2/inc_dec_mr.mp4',
+    videoUrls: [
+      'https://res.cloudinary.com/zopjocdi/video/upload/v1787219542/crochet_kids_symbols_level2/inc_dec_mr.mp4',
+      'https://res.cloudinary.com/zopjocdi/video/upload/v1787227873/crochet_kids_symbols_level2/inc_dec_mr_video2.mp4'
+    ],
+    imageUrl: '',
+  },
+  {
+    id: 'straight_line_mr',
+    abbr: 'Thẳng Hàng',
+    nameEn: 'Keeping Seam Straight in Rounds',
+    nameVi: 'Mẹo Móc Thẳng Hàng Vòng Tròn Ma Thuật',
+    category: 'Level 3 Cơ Bản',
+    svgType: 'straight_line_mr_shape',
+    description: 'Mẹo nhanh và dễ dàng giúp đường nối kết vòng trên sản phẩm móc xoắn ốc luôn thẳng tắp không bị lệch vạt.',
+    videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787228071/crochet_kids_symbols_level2/straight_line_mr.mp4',
     imageUrl: '',
   },
   {

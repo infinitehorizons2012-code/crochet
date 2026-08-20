@@ -392,6 +392,17 @@ export default function SymbolRenderer({ type, className = "w-20 h-20", strokeCo
           </g>
         );
 
+      case 'straight_line_mr_shape': // Keeping Seam Straight in MR
+        return (
+          <g>
+            <circle cx="50" cy="50" r="28" stroke="#3B82F6" strokeWidth="4" fill="none" />
+            <line x1="50" y1="15" x2="50" y2="85" stroke="#EC4899" strokeWidth="5" strokeDasharray="4 2" strokeLinecap="round" />
+            <circle cx="50" cy="30" r="4" fill="#F59E0B" />
+            <circle cx="50" cy="50" r="4" fill="#F59E0B" />
+            <circle cx="50" cy="70" r="4" fill="#F59E0B" />
+          </g>
+        );
+
       case 'level5_bag_shape': // Crochet Bag & Pouch Technique
         return (
           <g>
