@@ -50,7 +50,18 @@ export default function Level2SheetLessons({ onAddStars, onUnlockBadge }) {
     }
   };
 
-  // Determine active video URL for items with multiple videos (e.g. sheet_adjust_chain)
+  // Custom labels for multi-video lessons in Level 2 Tấm Vải
+  const getVideoLabel = (symbolId, idx) => {
+    if (symbolId === 'sheet_adjust_chain') {
+      return idx === 0 ? '🎬 Video 1: Thừa Bính' : '🎬 Video 2: Thiếu Bính';
+    }
+    if (symbolId === 'sheet_finish') {
+      return idx === 0 ? '🎬 Video 1: Kết Thúc Tàng Hình' : '🎬 Video 2: Mẹo Kết Thúc Yêu Thích';
+    }
+    return `🎬 Video ${idx + 1}`;
+  };
+
+  // Determine active video URL for items with multiple videos (e.g. sheet_adjust_chain, sheet_finish)
   const currentVideoUrl = currentSymbol.videoUrls && currentSymbol.videoUrls[activeVideoIndex]
     ? currentSymbol.videoUrls[activeVideoIndex]
     : currentSymbol.videoUrl;
@@ -163,7 +174,7 @@ export default function Level2SheetLessons({ onAddStars, onUnlockBadge }) {
                       : 'bg-white text-teal-700 hover:bg-teal-100 border border-teal-200'
                   }`}
                 >
-                  🎬 {idx === 0 ? 'Video 1: Thừa Bính' : 'Video 2: Thiếu Bính'}
+                  {getVideoLabel(currentSymbol.id, idx)}
                 </button>
               ))}
             </div>

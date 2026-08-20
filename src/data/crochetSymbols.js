@@ -409,6 +409,10 @@ export const CROCHET_SYMBOLS = [
     svgType: 'sheet_finish_shape',
     description: 'Kỹ thuật giấu sợi và kết thúc hàng tàng hình vuông vắn mượt mà cho tấm vải.',
     videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787210842/crochet_kids_symbols_level2_sheet/sheet_finish.mp4',
+    videoUrls: [
+      'https://res.cloudinary.com/zopjocdi/video/upload/v1787210842/crochet_kids_symbols_level2_sheet/sheet_finish.mp4',
+      'https://res.cloudinary.com/zopjocdi/video/upload/v1787219103/crochet_kids_symbols_level2_sheet/sheet_finish_video2.mp4'
+    ],
     imageUrl: '',
   },
   {
