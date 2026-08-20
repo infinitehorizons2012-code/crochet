@@ -81,45 +81,39 @@ export default function Level2Projects2D({ onAddStars, onUnlockBadge }) {
               className="bg-white rounded-3xl border-4 border-purple-100 shadow-xl overflow-hidden hover:shadow-2xl hover:border-purple-300 transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
-                {/* Project Video Thumbnail Container */}
-                <div className="relative w-full h-52 bg-slate-900 overflow-hidden flex items-center justify-center">
-                  <img
-                    src={getVideoPosterUrl(project.videoUrl)}
-                    alt={project.title}
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    onError={(e) => { e.target.style.display = 'none'; }}
-                  />
-                  <video
-                    src={project.videoUrl ? `${project.videoUrl}#t=0.5` : undefined}
-                    poster={getVideoPosterUrl(project.videoUrl)}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="relative z-10 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-90"
-                  />
-                  <div className="absolute inset-0 z-10 bg-gradient-to-t from-slate-950/80 via-transparent to-black/20" />
+                {/* Project Vivid Banner Header */}
+                <div className={`relative w-full h-52 bg-gradient-to-br ${project.color || 'from-purple-600 via-pink-600 to-rose-500'} overflow-hidden flex items-center justify-center p-6 shadow-inner group-hover:scale-102 transition-transform duration-300`}>
+                  {/* Decorative Background Elements */}
+                  <div className="absolute -right-8 -top-8 w-32 h-32 bg-white/10 rounded-full blur-xl pointer-events-none" />
+                  <div className="absolute -left-8 -bottom-8 w-32 h-32 bg-yellow-300/20 rounded-full blur-xl pointer-events-none" />
 
-                  {/* Play Overlay Badge */}
-                  <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Large 3D Floating Emoji Icon */}
+                  <div className="relative z-10 text-center transform group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-20 h-20 mx-auto bg-white/20 backdrop-blur-md rounded-3xl border-2 border-white/40 shadow-2xl flex items-center justify-center text-4xl">
+                      {project.emoji}
+                    </div>
+                  </div>
+
+                  {/* Glowing Play Overlay Button */}
+                  <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/20 backdrop-blur-[2px] opacity-90 group-hover:opacity-100 transition-opacity">
                     <button
                       onClick={() => {
                         soundFx.playPop();
                         setActiveProjectModal(project);
                       }}
-                      className="w-14 h-14 bg-purple-600/90 text-white rounded-full flex items-center justify-center shadow-2xl backdrop-blur-md group-hover:scale-110 transition-transform"
+                      className="w-16 h-16 bg-white text-purple-700 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-115 transition-transform duration-300 border-4 border-purple-200"
                     >
-                      <Play className="w-6 h-6 fill-white ml-0.5" />
+                      <Play className="w-7 h-7 fill-purple-700 ml-1" />
                     </button>
                   </div>
 
                   {isDone && (
-                    <div className="absolute top-3 right-3 bg-emerald-500 text-white p-1.5 rounded-full shadow-md z-10">
+                    <div className="absolute top-3 right-3 bg-emerald-500 text-white p-1.5 rounded-full shadow-md z-30">
                       <CheckCircle className="w-5 h-5" />
                     </div>
                   )}
 
-                  <div className="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-sm text-purple-200 text-xs font-black px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm border border-purple-300/30">
+                  <div className="absolute bottom-3 left-3 z-20 bg-black/40 backdrop-blur-md text-white text-xs font-black px-3 py-1 rounded-full flex items-center gap-1 shadow-sm border border-white/20">
                     <span>{project.emoji} {project.difficulty}</span>
                   </div>
                 </div>
