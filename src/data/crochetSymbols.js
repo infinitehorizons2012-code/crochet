@@ -479,6 +479,10 @@ export const CROCHET_SYMBOLS = [
     svgType: 'sheet_change_color_shape',
     description: 'Kỹ thuật đổi màu len giữa các hàng tấm vải sắc nét và tạo đường chọc màu phẳng đẹp.',
     videoUrl: 'https://res.cloudinary.com/zopjocdi/video/upload/v1787210868/crochet_kids_symbols_level2_sheet/sheet_change_color.mp4',
+    videoUrls: [
+      'https://res.cloudinary.com/zopjocdi/video/upload/v1787210868/crochet_kids_symbols_level2_sheet/sheet_change_color.mp4',
+      'https://res.cloudinary.com/zopjocdi/video/upload/v1787220758/crochet_kids_symbols_level2_sheet/sheet_change_color_video2.mp4'
+    ],
     imageUrl: '',
   },
   {

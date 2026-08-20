@@ -60,6 +60,9 @@ export default function Level2SheetLessons({ onAddStars, onUnlockBadge }) {
     if (symbolId === 'sheet_finish') {
       return idx === 0 ? '🎬 Video 1: Kết Thúc Tàng Hình' : '🎬 Video 2: Mẹo Kết Thúc Yêu Thích';
     }
+    if (symbolId === 'sheet_change_color') {
+      return idx === 0 ? '🎬 Video 1: Đổi Màu Chuẩn' : '🎬 Video 2: Mẹo Đổi Màu Mới';
+    }
     return `🎬 Video ${idx + 1}`;
   };
 
