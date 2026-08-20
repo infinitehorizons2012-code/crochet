@@ -5,7 +5,7 @@ import { soundFx } from '../utils/sound';
 export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsMuted }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
+  const [dropdown2Open, setDropdown2Open] = useState(false);
   const [dropdown3Open, setDropdown3Open] = useState(false);
 
   const handleMuteToggle = () => {
