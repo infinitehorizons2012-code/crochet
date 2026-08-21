@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
+import AuthModal from './components/AuthModal';
 import Level1Lessons from './components/Level1Lessons';
 import Level1Projects from './components/Level1Projects';
 import Level1Quiz from './components/Level1Quiz';
@@ -11,8 +12,16 @@ import Level5BagLessons from './components/Level5BagLessons';
 import Level6StitchLessons from './components/Level6StitchLessons';
 import SymbolQuiz from './components/SymbolQuiz';
 import YarnMixer from './components/YarnMixer';
-import AchievementBadges from './components/AchievementBadges';
 import Footer from './components/Footer';
+
+// Default initial demo user account
+const DEFAULT_DEMO_USER = {
+  username: 'hocsinh',
+  password: '1234',
+  avatar: '👧',
+  stars: 20,
+  badges: ['slip_knot_master']
+};
 
 // Simple Error Boundary Component to prevent white screen of death
 class ErrorBoundary extends React.Component {
@@ -61,47 +70,119 @@ class ErrorBoundary extends React.Component {
 export default function App() {
   const [activeTab, setActiveTab] = useState('level1_lessons');
   const [isMuted, setIsMuted] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
-  // Safe localStorage loading with try-catch
-  const [stars, setStars] = useState(() => {
+  // Load all user accounts from localStorage
+  const [users, setUsers] = useState(() => {
     try {
-      const saved = localStorage.getItem('crochet_kids_stars');
-      const val = parseInt(saved, 10);
-      return isNaN(val) ? 20 : val;
-    } catch (e) {
-      return 20;
-    }
+      const saved = localStorage.getItem('crochet_kids_users');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch (e) {}
+    return [DEFAULT_DEMO_USER];
   });
 
-  const [badges, setBadges] = useState(() => {
+  // Load current logged-in username
+  const [currentUsername, setCurrentUsername] = useState(() => {
     try {
-      const saved = localStorage.getItem('crochet_kids_badges');
-      return saved ? JSON.parse(saved) : ['slip_knot_master'];
-    } catch (e) {
-      return ['slip_knot_master'];
-    }
+      const saved = localStorage.getItem('crochet_kids_current_username');
+      if (saved) return saved;
+    } catch (e) {}
+    return 'hocsinh';
   });
 
+  // Save users array to localStorage whenever updated
   useEffect(() => {
     try {
-      localStorage.setItem('crochet_kids_stars', stars.toString());
+      localStorage.setItem('crochet_kids_users', JSON.stringify(users));
     } catch (e) {}
-  }, [stars]);
+  }, [users]);
 
+  // Save current username to localStorage whenever updated
   useEffect(() => {
     try {
-      localStorage.setItem('crochet_kids_badges', JSON.stringify(badges));
+      if (currentUsername) {
+        localStorage.setItem('crochet_kids_current_username', currentUsername);
+      } else {
+        localStorage.removeItem('crochet_kids_current_username');
+      }
     } catch (e) {}
-  }, [badges]);
+  }, [currentUsername]);
+
+  // Find active user object
+  const currentUser = users.find(
+    (u) => u.username.toLowerCase() === (currentUsername || '').toLowerCase()
+  ) || null;
+
+  const stars = currentUser ? currentUser.stars : 20;
+  const badges = currentUser ? (currentUser.badges || []) : ['slip_knot_master'];
 
   const handleAddStars = (amount) => {
-    setStars((prev) => prev + amount);
+    if (!currentUsername) return;
+    setUsers((prevUsers) =>
+      prevUsers.map((u) => {
+        if (u.username.toLowerCase() === currentUsername.toLowerCase()) {
+          return { ...u, stars: (u.stars || 0) + amount };
+        }
+        return u;
+      })
+    );
   };
 
   const handleUnlockBadge = (badgeId) => {
-    if (!badges.includes(badgeId)) {
-      setBadges((prev) => [...prev, badgeId]);
+    if (!currentUsername) return;
+    setUsers((prevUsers) =>
+      prevUsers.map((u) => {
+        if (u.username.toLowerCase() === currentUsername.toLowerCase()) {
+          const userBadges = u.badges || [];
+          if (!userBadges.includes(badgeId)) {
+            return { ...u, badges: [...userBadges, badgeId] };
+          }
+        }
+        return u;
+      })
+    );
+  };
+
+  const handleLogin = (username, password) => {
+    const found = users.find(
+      (u) => u.username.toLowerCase() === username.toLowerCase() && u.password === password
+    );
+
+    if (found) {
+      setCurrentUsername(found.username);
+      return { success: true };
     }
+    return { success: false, message: 'Tên đăng nhập hoặc mật khẩu chưa đúng!' };
+  };
+
+  const handleRegister = (username, password, avatar) => {
+    const exists = users.some(
+      (u) => u.username.toLowerCase() === username.toLowerCase()
+    );
+
+    if (exists) {
+      return { success: false, message: 'Tên đăng nhập này đã tồn tại! Vui lòng chọn tên khác.' };
+    }
+
+    const newUser = {
+      username,
+      password,
+      avatar: avatar || '👧',
+      stars: 20,
+      badges: ['slip_knot_master']
+    };
+
+    setUsers((prev) => [...prev, newUser]);
+    setCurrentUsername(username);
+    return { success: true };
+  };
+
+  const handleLogout = () => {
+    setCurrentUsername(null);
+    setIsAuthModalOpen(false);
   };
 
   return (
@@ -116,6 +197,18 @@ export default function App() {
           badgesUnlocked={badges.length}
           isMuted={isMuted}
           setIsMuted={setIsMuted}
+          currentUser={currentUser}
+          onOpenAuthModal={() => setIsAuthModalOpen(true)}
+        />
+
+        {/* Authentication Modal */}
+        <AuthModal
+          isOpen={isAuthModalOpen}
+          onClose={() => setIsAuthModalOpen(false)}
+          currentUser={currentUser}
+          onLogin={handleLogin}
+          onRegister={handleRegister}
+          onLogout={handleLogout}
         />
 
         {/* Main Content Area */}

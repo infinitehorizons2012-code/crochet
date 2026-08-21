@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Volume2, VolumeX, Star, Sparkles, Menu, X, BookOpen, Heart, Palette, HelpCircle, ChevronDown, Film, Layers } from 'lucide-react';
+import { Volume2, VolumeX, Star, Sparkles, Menu, X, BookOpen, Heart, Palette, HelpCircle, ChevronDown, Film, Layers, User } from 'lucide-react';
 import { soundFx } from '../utils/sound';
 
-export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsMuted }) {
+export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsMuted, currentUser, onOpenAuthModal }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [dropdown2Open, setDropdown2Open] = useState(false);
@@ -427,6 +427,22 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
           {/* Right Status Actions */}
           <div className="flex items-center gap-3">
             
+            {/* User Account / Auth Button */}
+            <button
+              onClick={onOpenAuthModal}
+              title={currentUser ? `Tài khoản: ${currentUser.username}` : "Đăng nhập hoặc tạo tài khoản mới"}
+              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-full border-2 font-black text-sm transition-all shadow-sm ${
+                currentUser
+                  ? 'bg-pink-50 border-pink-300 text-pink-700 hover:bg-pink-100 hover:border-pink-400'
+                  : 'bg-gradient-to-r from-pink-500 to-purple-500 border-pink-400 text-white hover:scale-105 hover:shadow-pink-200'
+              }`}
+            >
+              <span className="text-base">{currentUser ? currentUser.avatar : '👤'}</span>
+              <span className="hidden sm:inline">
+                {currentUser ? currentUser.username : 'Đăng Nhập'}
+              </span>
+            </button>
+
             {/* Stars Counter */}
             <div className="flex items-center gap-1.5 bg-amber-100 border-2 border-amber-300 text-amber-800 px-3.5 py-1.5 rounded-full font-black text-sm shadow-sm">
               <Star className="w-5 h-5 text-amber-500 fill-amber-400 animate-pulse" />
