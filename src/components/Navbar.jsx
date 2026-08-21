@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Volume2, VolumeX, Star, Sparkles, Menu, X, BookOpen, Heart, Palette, HelpCircle, ChevronDown, Film, Layers, User } from 'lucide-react';
+import { Volume2, VolumeX, Star, Sparkles, Menu, X, BookOpen, Heart, Palette, HelpCircle, ChevronDown, Film, Layers, User, TrendingUp } from 'lucide-react';
 import { soundFx } from '../utils/sound';
 
 export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsMuted, currentUser, onOpenAuthModal }) {
@@ -422,6 +422,19 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
               )}
             </div>
 
+            {/* PROGRESS DASHBOARD TAB */}
+            <button
+              onClick={() => handleNavClick('progress')}
+              className={`flex items-center gap-1.5 px-3.5 py-2.5 rounded-full font-extrabold text-xs sm:text-sm transition-all duration-200 ${
+                activeTab === 'progress'
+                  ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-md scale-105'
+                  : 'text-slate-600 hover:text-emerald-600 hover:bg-emerald-50'
+              }`}
+            >
+              <TrendingUp className="w-4 h-4 text-emerald-500" />
+              Tiến Độ 📈
+            </button>
+
           </nav>
 
           {/* Right Status Actions */}
@@ -471,6 +484,19 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t-2 border-pink-100 space-y-2 bg-amber-50/90 rounded-b-2xl px-2">
+            
+            {/* Mobile Progress Tab */}
+            <button
+              onClick={() => handleNavClick('progress')}
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl font-black text-sm transition-all border-2 ${
+                activeTab === 'progress'
+                  ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white border-emerald-400 shadow-md'
+                  : 'bg-white text-slate-800 border-emerald-200 hover:bg-emerald-50'
+              }`}
+            >
+              <TrendingUp className="w-5 h-5 text-emerald-500" />
+              Bảng Tiến Độ Học Tập 📈 (Xem Tất Cả Level)
+            </button>
             
             {/* Mobile Level 1 Group */}
             <div className="bg-white p-3 rounded-2xl border-2 border-amber-200 space-y-2">

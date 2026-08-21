@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import AuthModal from './components/AuthModal';
+import ProgressDashboard from './components/ProgressDashboard';
 import Level1Lessons from './components/Level1Lessons';
 import Level1Projects from './components/Level1Projects';
 import Level1Quiz from './components/Level1Quiz';
@@ -20,7 +21,9 @@ const DEFAULT_DEMO_USER = {
   password: '1234',
   avatar: '👧',
   stars: 20,
-  badges: ['slip_knot_master']
+  badges: ['slip_knot_master'],
+  completedLessons: ['l1_v1', 'l1_v2'],
+  quizStats: { stage: 'mam', streak: 0 }
 };
 
 // Simple Error Boundary Component to prevent white screen of death
@@ -118,6 +121,8 @@ export default function App() {
 
   const stars = currentUser ? currentUser.stars : 20;
   const badges = currentUser ? (currentUser.badges || []) : ['slip_knot_master'];
+  const completedLessons = currentUser ? (currentUser.completedLessons || []) : [];
+  const quizStats = currentUser ? (currentUser.quizStats || { stage: 'mam', streak: 0 }) : { stage: 'mam', streak: 0 };
 
   const handleAddStars = (amount) => {
     if (!currentUsername) return;
@@ -140,6 +145,33 @@ export default function App() {
           if (!userBadges.includes(badgeId)) {
             return { ...u, badges: [...userBadges, badgeId] };
           }
+        }
+        return u;
+      })
+    );
+  };
+
+  const handleCompleteLesson = (lessonId) => {
+    if (!currentUsername) return;
+    setUsers((prevUsers) =>
+      prevUsers.map((u) => {
+        if (u.username.toLowerCase() === currentUsername.toLowerCase()) {
+          const completed = u.completedLessons || [];
+          if (!completed.includes(lessonId)) {
+            return { ...u, completedLessons: [...completed, lessonId] };
+          }
+        }
+        return u;
+      })
+    );
+  };
+
+  const handleUpdateQuizStats = (stage, streak) => {
+    if (!currentUsername) return;
+    setUsers((prevUsers) =>
+      prevUsers.map((u) => {
+        if (u.username.toLowerCase() === currentUsername.toLowerCase()) {
+          return { ...u, quizStats: { stage, streak } };
         }
         return u;
       })
@@ -172,7 +204,9 @@ export default function App() {
       password,
       avatar: avatar || '👧',
       stars: 20,
-      badges: ['slip_knot_master']
+      badges: ['slip_knot_master'],
+      completedLessons: [],
+      quizStats: { stage: 'mam', streak: 0 }
     };
 
     setUsers((prev) => [...prev, newUser]);
@@ -214,11 +248,22 @@ export default function App() {
         {/* Main Content Area */}
         <main className="flex-grow">
           
+          {/* Progress Dashboard */}
+          {activeTab === 'progress' && (
+            <ProgressDashboard
+              currentUser={currentUser}
+              completedLessons={completedLessons}
+              quizStats={quizStats}
+              onNavigateTab={(tabId) => setActiveTab(tabId)}
+            />
+          )}
+
           {/* Tab Router */}
           {activeTab === 'level1_lessons' && (
             <Level1Lessons
               onAddStars={handleAddStars}
               onUnlockBadge={handleUnlockBadge}
+              onCompleteLesson={handleCompleteLesson}
             />
           )}
 
@@ -233,6 +278,7 @@ export default function App() {
             <Level1Projects
               onAddStars={handleAddStars}
               onUnlockBadge={handleUnlockBadge}
+              onCompleteLesson={handleCompleteLesson}
             />
           )}
 
@@ -240,6 +286,8 @@ export default function App() {
             <Level1Quiz
               onAddStars={handleAddStars}
               onUnlockBadge={handleUnlockBadge}
+              quizStats={quizStats}
+              onUpdateQuizStats={handleUpdateQuizStats}
             />
           )}
 
@@ -247,6 +295,7 @@ export default function App() {
             <Level2SheetLessons
               onAddStars={handleAddStars}
               onUnlockBadge={handleUnlockBadge}
+              onCompleteLesson={handleCompleteLesson}
             />
           )}
 
@@ -254,6 +303,7 @@ export default function App() {
             <Level2Lessons
               onAddStars={handleAddStars}
               onUnlockBadge={handleUnlockBadge}
+              onCompleteLesson={handleCompleteLesson}
             />
           )}
 
@@ -261,6 +311,7 @@ export default function App() {
             <Level2Projects2D
               onAddStars={handleAddStars}
               onUnlockBadge={handleUnlockBadge}
+              onCompleteLesson={handleCompleteLesson}
             />
           )}
 
@@ -268,6 +319,7 @@ export default function App() {
             <Level4GrannyLessons
               onAddStars={handleAddStars}
               onUnlockBadge={handleUnlockBadge}
+              onCompleteLesson={handleCompleteLesson}
             />
           )}
 
@@ -275,6 +327,7 @@ export default function App() {
             <Level5BagLessons
               onAddStars={handleAddStars}
               onUnlockBadge={handleUnlockBadge}
+              onCompleteLesson={handleCompleteLesson}
             />
           )}
 
@@ -282,6 +335,7 @@ export default function App() {
             <Level6StitchLessons
               onAddStars={handleAddStars}
               onUnlockBadge={handleUnlockBadge}
+              onCompleteLesson={handleCompleteLesson}
             />
           )}
 

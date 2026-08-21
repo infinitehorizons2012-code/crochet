@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { HelpCircle, CheckCircle2, XCircle, Sparkles, Star, Award, RotateCcw, ArrowRight, BookOpen, Layers } from 'lucide-react';
+import { HelpCircle, CheckCircle2, XCircle, Sparkles, Star, Award, RotateCcw, ArrowRight, BookOpen, Layers, TrendingUp, TrendingDown } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { soundFx } from '../utils/sound';
 import { CROCHET_SYMBOLS } from '../data/crochetSymbols';
@@ -7,15 +7,15 @@ import SymbolRenderer from './SymbolRenderer';
 
 const LEVEL1_SYMBOL_IDS = ['begin', 'ch', 'sl_st', 'sc', 'hdc', 'dc', 'tr', 'dc2tog'];
 
-export default function Level1Quiz({ onAddStars, onUnlockBadge }) {
+export default function Level1Quiz({ onAddStars, onUnlockBadge, quizStats = { stage: 'mam', streak: 0 }, onUpdateQuizStats }) {
   const level1Symbols = LEVEL1_SYMBOL_IDS.map((id) => CROCHET_SYMBOLS.find((s) => s.id === id)).filter(Boolean);
 
-  const [mode, setMode] = useState('symbol_to_name'); // 'symbol_to_name' (Cho Hình ➔ Chọn Tên) | 'name_to_symbol' (Cho Tên ➔ Chọn Hình)
+  const [mode, setMode] = useState('symbol_to_name');
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
   const [score, setScore] = useState(0);
-  const [streak, setStreak] = useState(0);
+  const [growthMessage, setGrowthMessage] = useState(null);
 
   // Generate question options
   const targetSymbol = level1Symbols[currentQuestionIndex % level1Symbols.length];
@@ -33,32 +33,65 @@ export default function Level1Quiz({ onAddStars, onUnlockBadge }) {
     setOptions(generateOptions());
     setSelectedAnswer(null);
     setIsCorrect(null);
+    setGrowthMessage(null);
   }, [currentQuestionIndex, mode]);
 
   const handleAnswerSelect = (option) => {
-    if (selectedAnswer !== null) return; // Prevent double clicking
+    if (selectedAnswer !== null) return;
 
     setSelectedAnswer(option.id);
     const correct = option.id === targetSymbol.id;
     setIsCorrect(correct);
 
+    const currentStage = quizStats.stage || 'mam';
+    const currentStreak = quizStats.streak || 0;
+
     if (correct) {
       soundFx.playCorrect();
       confetti({
-        particleCount: 50,
-        spread: 60,
+        particleCount: 60,
+        spread: 70,
         origin: { y: 0.7 }
       });
       setScore((prev) => prev + 10);
-      setStreak((prev) => prev + 1);
       onAddStars(5);
 
-      if (streak + 1 >= 5) {
+      const newStreak = currentStreak + 1;
+
+      // PLANT GROWTH STAGE RULES:
+      // 1. mầm + 2 lần đúng liên tiếp ➔ Cây 🌿
+      // 2. cây + 3 lần đúng liên tiếp ➔ Hoa 🌸
+      if (currentStage === 'mam' && newStreak >= 2) {
+        onUpdateQuizStats && onUpdateQuizStats('cay', 0);
+        setGrowthMessage('🌱 ➔ 🌿 CHÚC MỪNG! Bé vừa 2 lần đúng liên tiếp, Mầm đã nảy thành CÂY XANH 🌿!');
+        confetti({ particleCount: 100, spread: 100 });
+      } else if (currentStage === 'cay' && newStreak >= 3) {
+        onUpdateQuizStats && onUpdateQuizStats('hoa', 0);
+        setGrowthMessage('🌿 ➔ 🌸 XUẤT SẮC! Bé vừa 3 lần đúng liên tiếp, Cây đã nở thành HOA RỰC RỠ 🌸!');
+        confetti({ particleCount: 150, spread: 120 });
+      } else {
+        onUpdateQuizStats && onUpdateQuizStats(currentStage, newStreak);
+      }
+
+      if (newStreak >= 5) {
         onUnlockBadge('chart_reader_l1');
       }
     } else {
       soundFx.playWrong();
-      setStreak(0);
+
+      // DEMOTION RULES:
+      // đang hoa + sai ➔ tụt xuống Cây 🌿
+      // đang cây + sai ➔ tụt xuống Mầm 🌱
+      // đang mầm + sai ➔ giữ Mầm 🌱
+      if (currentStage === 'hoa') {
+        onUpdateQuizStats && onUpdateQuizStats('cay', 0);
+        setGrowthMessage('🔻 Ối! Làm sai nên cấp độ từ HOA 🌸 bị tụt xuống CÂY 🌿 rồi. Cố lên bé nhé!');
+      } else if (currentStage === 'cay') {
+        onUpdateQuizStats && onUpdateQuizStats('mam', 0);
+        setGrowthMessage('🔻 Ối! Làm sai nên cấp độ từ CÂY 🌿 bị tụt xuống MẦM 🌱 rồi. Cố lên bé nhé!');
+      } else {
+        onUpdateQuizStats && onUpdateQuizStats('mam', 0);
+      }
     }
   };
 
@@ -66,6 +99,8 @@ export default function Level1Quiz({ onAddStars, onUnlockBadge }) {
     soundFx.playPop();
     setCurrentQuestionIndex((prev) => prev + 1);
   };
+
+  const STAGE_EMOJIS = { mam: '🌱 Mầm', cay: '🌿 Cây', hoa: '🌸 Hoa' };
 
   return (
     <div className="space-y-8 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -85,17 +120,19 @@ export default function Level1Quiz({ onAddStars, onUnlockBadge }) {
           </p>
         </div>
 
-        {/* Scoreboard */}
+        {/* Scoreboard & Plant Stage Indicator */}
         <div className="flex items-center gap-3">
           <div className="bg-white/90 backdrop-blur-md text-slate-800 px-4 py-3 rounded-2xl border-2 border-white shadow-md text-center min-w-[100px]">
-            <span className="block text-[11px] font-black text-slate-500 uppercase">Điểm Số</span>
-            <span className="text-2xl font-black text-purple-600">{score} pt</span>
+            <span className="block text-[11px] font-black text-slate-500 uppercase">Cấp Sinh Trưởng</span>
+            <span className="text-xl font-black text-emerald-600">
+              {STAGE_EMOJIS[quizStats.stage || 'mam']}
+            </span>
           </div>
 
           <div className="bg-white/90 backdrop-blur-md text-slate-800 px-4 py-3 rounded-2xl border-2 border-white shadow-md text-center min-w-[100px]">
             <span className="block text-[11px] font-black text-slate-500 uppercase">Chuỗi Đúng</span>
             <span className="text-2xl font-black text-amber-500 flex items-center justify-center gap-1">
-              {streak} 🔥
+              {quizStats.streak || 0} 🔥
             </span>
           </div>
         </div>
@@ -151,7 +188,7 @@ export default function Level1Quiz({ onAddStars, onUnlockBadge }) {
 
             {/* Options List (Text Options) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              {options.map((option, idx) => {
+              {options.map((option) => {
                 const isSelected = selectedAnswer === option.id;
                 const isAnswerCorrect = option.id === targetSymbol.id;
 
@@ -237,6 +274,13 @@ export default function Level1Quiz({ onAddStars, onUnlockBadge }) {
                 );
               })}
             </div>
+          </div>
+        )}
+
+        {/* Growth Level Change Message */}
+        {growthMessage && (
+          <div className="p-4 rounded-2xl bg-amber-100 border-2 border-amber-300 text-amber-900 font-extrabold text-xs shadow-md animate-bounce">
+            {growthMessage}
           </div>
         )}
 
