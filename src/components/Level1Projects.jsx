@@ -82,29 +82,33 @@ export default function Level1Projects({ onAddStars, onUnlockBadge }) {
               className="bg-white rounded-3xl border-4 border-pink-100 shadow-xl overflow-hidden hover:shadow-2xl hover:border-pink-300 transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
-                {/* Project Vivid Banner Header */}
-                <div className={`relative w-full h-48 bg-gradient-to-br ${project.color || 'from-pink-500 via-purple-500 to-indigo-500'} overflow-hidden flex items-center justify-center p-6 shadow-inner group-hover:scale-102 transition-transform duration-300`}>
-                  {/* Decorative Background Elements */}
-                  <div className="absolute -right-8 -top-8 w-32 h-32 bg-white/10 rounded-full blur-xl pointer-events-none" />
-                  <div className="absolute -left-8 -bottom-8 w-32 h-32 bg-yellow-300/20 rounded-full blur-xl pointer-events-none" />
-
-                  {/* Large 3D Floating Emoji Icon */}
-                  <div className="relative z-10 text-center transform group-hover:scale-110 transition-transform duration-300">
-                    <div className="w-18 h-18 mx-auto bg-white/20 backdrop-blur-md rounded-3xl border-2 border-white/40 shadow-2xl flex items-center justify-center text-4xl">
+                {/* Project Video Poster Image Header */}
+                <div className="relative w-full h-48 bg-slate-900 overflow-hidden flex items-center justify-center group-hover:scale-102 transition-transform duration-300">
+                  {project.posterUrl ? (
+                    <img
+                      src={project.posterUrl}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className={`w-full h-full bg-gradient-to-br ${project.color || 'from-pink-500 to-purple-500'} flex items-center justify-center text-4xl`}>
                       {project.emoji}
                     </div>
-                  </div>
+                  )}
+
+                  {/* Dark Gradient Vignette Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-black/20 to-transparent" />
 
                   {/* Glowing Play Overlay Button */}
-                  <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/20 backdrop-blur-[2px] opacity-90 group-hover:opacity-100 transition-opacity">
+                  <div className="absolute inset-0 z-20 flex items-center justify-center">
                     <button
                       onClick={() => {
                         soundFx.playPop();
                         setActiveProjectModal(project);
                       }}
-                      className="w-16 h-16 bg-white text-pink-600 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-115 transition-transform duration-300 border-4 border-pink-200"
+                      className="w-16 h-16 bg-pink-600/90 hover:bg-pink-600 text-white rounded-full flex items-center justify-center shadow-2xl backdrop-blur-md group-hover:scale-115 transition-transform duration-300 border-4 border-white/80"
                     >
-                      <Play className="w-7 h-7 fill-pink-600 ml-1" />
+                      <Play className="w-7 h-7 fill-white ml-1" />
                     </button>
                   </div>
 
@@ -114,7 +118,7 @@ export default function Level1Projects({ onAddStars, onUnlockBadge }) {
                     </div>
                   )}
 
-                  <div className="absolute bottom-3 left-3 z-20 bg-black/40 backdrop-blur-md text-white text-xs font-black px-3 py-1 rounded-full flex items-center gap-1 shadow-sm border border-white/20">
+                  <div className="absolute bottom-3 left-3 z-20 bg-slate-900/80 backdrop-blur-md text-amber-300 text-xs font-black px-3 py-1 rounded-full flex items-center gap-1 shadow-sm border border-white/20">
                     <span>{project.emoji} {project.difficulty}</span>
                   </div>
                 </div>
@@ -192,7 +196,7 @@ export default function Level1Projects({ onAddStars, onUnlockBadge }) {
               <div className="relative w-full max-h-[460px] bg-black rounded-2xl overflow-hidden border-4 border-slate-800 shadow-inner flex items-center justify-center">
                 <video
                   src={activeProjectModal.videoUrl}
-                  poster={getVideoPosterUrl(activeProjectModal.videoUrl)}
+                  poster={activeProjectModal.posterUrl || getVideoPosterUrl(activeProjectModal.videoUrl)}
                   controls
                   autoPlay
                   className="w-full max-h-[420px] object-contain rounded-xl"
