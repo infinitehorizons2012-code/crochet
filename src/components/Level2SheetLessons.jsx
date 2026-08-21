@@ -6,13 +6,12 @@ import { CROCHET_SYMBOLS } from '../data/crochetSymbols';
 import SymbolRenderer from './SymbolRenderer';
 import CrochetMotionPlayer from './CrochetMotionPlayer';
 
-// 9 Level 2 Tấm Vải items: sheet_start, sheet_long_chain, sheet_row2, sheet_adjust_chain, sheet_bottom_loop, sheet_finish, sheet_step_up, sheet_add_yarn, sheet_change_color
+// 8 Level 2 Tấm Vải items: sheet_start, sheet_long_chain, sheet_row2, sheet_adjust_chain, sheet_finish, sheet_step_up, sheet_add_yarn, sheet_change_color
 const LEVEL2_SHEET_SYMBOL_IDS = [
   'sheet_start',
   'sheet_long_chain',
   'sheet_row2',
   'sheet_adjust_chain',
-  'sheet_bottom_loop',
   'sheet_finish',
   'sheet_step_up',
   'sheet_add_yarn',
@@ -95,7 +94,7 @@ export default function Level2SheetLessons({ onAddStars, onUnlockBadge }) {
             Level 2: Tấm Vải & Kỹ Thuật Móc Phẳng 🧵
           </h2>
           <p className="text-sm sm:text-base font-bold text-emerald-50 max-w-xl">
-            Bé hãy xem 7 bài học lý thuyết trực quan về kỹ thuật móc tấm vải phẳng: Bắt Đầu nút bính, Dây Xích Dài, mẹo Thừa/Thiếu bính, Cách Kết Thúc, Lên Hàng thẳng tắp, Thêm Len & Đổi Màu Len nhé!
+            Bé hãy xem 8 bài học lý thuyết trực quan về kỹ thuật móc tấm vải phẳng: Bắt Đầu nút bính, Dây Xích Dài, Hàng 2, mẹo Thừa/Thiếu bính, Cách Kết Thúc, Lên Hàng thẳng tắp, Thêm Len & Đổi Màu Len nhé!
           </p>
         </div>
 
@@ -114,8 +113,8 @@ export default function Level2SheetLessons({ onAddStars, onUnlockBadge }) {
         </div>
       </div>
 
-      {/* 9 Level 2 Selection Tabs */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-9 gap-3">
+      {/* 8 Level 2 Selection Tabs */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-8 gap-3">
         {sheetSymbols.map((item) => {
           const isSelected = item.id === selectedId;
           const isDone = completedStitches.includes(item.id);

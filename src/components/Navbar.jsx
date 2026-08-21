@@ -510,7 +510,7 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                 }`}
               >
                 <Film className="w-4 h-4" />
-                Level 2: Tấm Vải 🧵 (7 Bài)
+                Level 2: Tấm Vải 🧵 (8 Bài)
               </button>
             </div>
 
@@ -528,7 +528,7 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                 }`}
               >
                 <Film className="w-4 h-4" />
-                Vòng Tròn Ma Thuật Level 3 🌀 (7 Bài)
+                Vòng Tròn Ma Thuật Level 3 🌀 (9 Bài)
               </button>
               <button
                 onClick={() => handleNavClick('level2_projects_2d')}
@@ -575,7 +575,7 @@ export default function Navbar({ activeTab, setActiveTab, stars, isMuted, setIsM
                 }`}
               >
                 <Film className="w-4 h-4" />
-                Level 5: Móc Túi 👜 (Lý Thuyết)
+                Level 5: Móc Túi 👜 (2 Bài)
               </button>
             </div>
 

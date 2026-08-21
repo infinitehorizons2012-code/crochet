@@ -6,11 +6,11 @@ import { CROCHET_SYMBOLS } from '../data/crochetSymbols';
 import SymbolRenderer from './SymbolRenderer';
 import CrochetMotionPlayer from './CrochetMotionPlayer';
 
-const LEVEL5_BAG_SYMBOL_IDS = ['level5_bag'];
+const LEVEL5_BAG_SYMBOL_IDS = ['sheet_bottom_loop', 'level5_bag'];
 
 export default function Level5BagLessons({ onAddStars, onUnlockBadge }) {
   const bagSymbols = LEVEL5_BAG_SYMBOL_IDS.map((id) => CROCHET_SYMBOLS.find((s) => s.id === id)).filter(Boolean);
-  const [selectedId, setSelectedId] = useState('level5_bag');
+  const [selectedId, setSelectedId] = useState('sheet_bottom_loop');
   const [isFlipped, setIsFlipped] = useState(false);
   const [activeVideoIndex, setActiveVideoIndex] = useState(0);
   const [completedStitches, setCompletedStitches] = useState([]);
