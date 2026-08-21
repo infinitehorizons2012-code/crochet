@@ -96,8 +96,8 @@ export default function Level1Projects({ onAddStars, onUnlockBadge }) {
                     </div>
                   )}
 
-                  {/* Dark Gradient Vignette Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-black/20 to-transparent" />
+                  {/* Light Bottom Gradient Overlay for text contrast */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
 
                   {/* Glowing Play Overlay Button */}
                   <div className="absolute inset-0 z-20 flex items-center justify-center">
