@@ -27,16 +27,6 @@ export default function Footer() {
             <Heart className="w-4 h-4 text-pink-500 fill-pink-500 animate-pulse" />
             <span>cho bé</span>
           </div>
-
-          <a
-            href="https://github.com/infinitehorizons2012-code/crochet"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 bg-slate-100 hover:bg-pink-100 hover:text-pink-600 px-3.5 py-1.5 rounded-full border border-slate-200 transition-colors"
-          >
-            <Globe className="w-4 h-4 text-pink-500" />
-            <span>GitHub Repository</span>
-          </a>
         </div>
 
       </div>
