@@ -1,4 +1,4 @@
-import { chromium } from 'playwright';
+import { execSync } from 'child_process';
 import { v2 as cloudinary } from 'cloudinary';
 import dotenv from 'dotenv';
 import fs from 'fs';
@@ -21,35 +21,25 @@ const allProjects = [
   ...projectsL1.map(p => ({ ...p, type: 'l1' }))
 ];
 
-async function generateAndUploadPosters() {
+async function generateAndUploadFFmpegPosters() {
   const outputDir = path.join(process.cwd(), 'scratch', 'posters');
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
-  // Launch Chromium with no-user-gesture-required autoplay policy
-  const browser = await chromium.launch({
-    args: ['--autoplay-policy=no-user-gesture-required', '--no-sandbox']
-  });
-
   for (let i = 0; i < allProjects.length; i++) {
     const proj = allProjects[i];
-    console.log(`[${i+1}/${allProjects.length}] Extracting real playing frame for ${proj.id} (${proj.title})...`);
-
-    const page = await browser.newPage();
-    await page.goto(proj.videoUrl, { waitUntil: 'domcontentloaded' });
-    await page.waitForTimeout(2500);
+    console.log(`[${i+1}/${allProjects.length}] FFmpeg extracting frame for ${proj.id} (${proj.title})...`);
 
     const localJpgPath = path.join(outputDir, `${proj.id}.jpg`);
-    await page.screenshot({ path: localJpgPath, type: 'jpeg', quality: 85 });
-    await page.close();
+    const ffmpegCmd = `ffmpeg -ss 00:00:02.5 -i "${proj.videoUrl}" -vframes 1 -q:v 2 "${localJpgPath}" -y`;
 
-    const size = fs.statSync(localJpgPath).size;
-    console.log(`Saved local poster (${proj.id}): ${size} bytes`);
+    try {
+      execSync(ffmpegCmd, { stdio: 'ignore' });
+      const size = fs.statSync(localJpgPath).size;
+      console.log(`Extracted frame (${proj.id}): ${size} bytes`);
 
-    if (size > 10000) {
-      // Upload to Cloudinary
-      try {
+      if (size > 10000) {
         const uploadRes = await cloudinary.uploader.upload(localJpgPath, {
           folder: 'crochet_kids_posters',
           public_id: `${proj.id}_poster`,
@@ -57,13 +47,11 @@ async function generateAndUploadPosters() {
         });
         console.log(`Uploaded Cloudinary Poster (${proj.id}): ${uploadRes.secure_url}`);
         proj.posterUrl = uploadRes.secure_url;
-      } catch (uploadErr) {
-        console.error(`Cloudinary upload failed for ${proj.id}:`, uploadErr.message);
       }
+    } catch (err) {
+      console.error(`FFmpeg failed for ${proj.id}:`, err.message);
     }
   }
-
-  await browser.close();
 
   const updatedL2 = projectsL2.map(p => {
     const match = allProjects.find(ap => ap.id === p.id);
@@ -78,7 +66,7 @@ async function generateAndUploadPosters() {
   fs.writeFileSync('src/data/level2Projects2D.json', JSON.stringify(updatedL2, null, 2), 'utf8');
   fs.writeFileSync('src/data/level1Projects.json', JSON.stringify(updatedL1, null, 2), 'utf8');
 
-  console.log('Successfully updated level2Projects2D.json & level1Projects.json with REAL COLORFUL posterUrls!');
+  console.log('SUCCESSFULLY EXTRACTED & UPLOADED REAL COLORFUL POSTERS FOR ALL PROJECTS!');
 }
 
-generateAndUploadPosters();
+generateAndUploadFFmpegPosters();
