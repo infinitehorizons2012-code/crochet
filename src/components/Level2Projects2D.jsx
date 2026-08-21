@@ -18,7 +18,8 @@ export default function Level2Projects2D({ onAddStars, onUnlockBadge }) {
     stars: p.stars || 40,
     color: p.color || (idx % 2 === 0 ? 'from-purple-500 to-pink-500' : 'from-indigo-500 to-purple-500'),
     description: `Mẫu thực hành móc 2D Level 2 #${idx + 1} ứng dụng kỹ thuật Vòng Tròn Ma Thuật, đổi màu len và kết vòng mượt mà.`,
-    videoUrl: p.videoUrl
+    videoUrl: p.videoUrl,
+    posterUrl: p.posterUrl
   }));
 
   const handleCompleteProject = (project) => {

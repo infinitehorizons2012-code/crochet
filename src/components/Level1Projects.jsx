@@ -19,7 +19,8 @@ export default function Level1Projects({ onAddStars, onUnlockBadge }) {
     stars: 30,
     color: idx % 2 === 0 ? 'from-pink-400 to-purple-400' : 'from-amber-400 to-pink-400',
     description: `Bài thực hành móc len mẫu Level 1 #${idx + 1} tích hợp các mũi móc cơ bản bính, dời, đơn và kép.`,
-    videoUrl: p.videoUrl
+    videoUrl: p.videoUrl,
+    posterUrl: p.posterUrl
   }));
 
   const handleCompleteProject = (project) => {
